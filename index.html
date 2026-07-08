@@ -1,0 +1,2731 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devcon India Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Space+Grotesk:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* DARK THEME (default) */
+    :root,
+    [data-theme="light"] {
+      --bg: #080808;
+      --bg2: #0f0f0f;
+      --bg3: #141414;
+      --border: #1e1e1e;
+      --border2: #2a2a2a;
+      --text: #e8e4d9;
+      --muted: #666;
+      --dim: #333;
+      --orange: #E97B2E;
+      --orange-dim: #1a0d00;
+      --green: #4ade80;
+      --skyline-fill: #0f0f0f;
+      --skyline-stroke: #2a2a2a;
+      --skyline-glow: rgba(233, 123, 46, 0.08);
+      --mono: 'Share Tech Mono', monospace;
+      --sans: 'Space Grotesk', sans-serif;
+    }
+
+    /* LIGHT THEME */
+    [data-theme="light"] {
+      --bg: #f5f0e8;
+      --bg2: #ede8de;
+      --bg3: #e5dfd3;
+      --border: #d4cfc5;
+      --border2: #c0bab0;
+      --text: #1a1510;
+      --muted: #7a7068;
+      --dim: #a09888;
+      --orange: #C8581A;
+      --orange-dim: #fdf0e6;
+      --green: #16a34a;
+      --skyline-fill: #ede8de;
+      --skyline-stroke: #c0bab0;
+      --skyline-glow: rgba(200, 88, 26, 0.06);
+      --mono: 'Share Tech Mono', monospace;
+      --sans: 'Space Grotesk', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.6;
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border2);
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 32px;
+      height: 52px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--orange);
+      letter-spacing: 0.1em;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0;
+      align-items: center;
+    }
+
+    .nav-link {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0 14px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      border-left: 1px solid var(--border);
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      font-family: var(--mono);
+      font-size: 10px;
+      background: var(--orange);
+      color: #fff;
+      padding: 8px 16px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      height: 52px;
+      border-left: 1px solid var(--border);
+    }
+
+    .nav-cta:hover {
+      opacity: 0.88;
+    }
+
+    /* THEME TOGGLE */
+    .theme-toggle {
+      height: 52px;
+      border-left: 1px solid var(--border);
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      background: none;
+      border-top: none;
+      border-right: none;
+      border-bottom: none;
+      color: var(--muted);
+      font-size: 15px;
+      transition: color 0.15s;
+    }
+
+    .theme-toggle:hover {
+      color: var(--orange);
+    }
+
+    /* TICKER */
+    .ticker {
+      background: var(--orange-dim);
+      border-bottom: 1px solid var(--border);
+      padding: 7px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      transition: background 0.3s;
+    }
+
+    .ticker-track {
+      display: inline-flex;
+      animation: ticker 25s linear infinite;
+    }
+
+    .ticker-item {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--orange);
+      letter-spacing: 0.12em;
+      padding: 0 32px;
+    }
+
+    @keyframes ticker {
+      0% {
+        transform: translateX(0)
+      }
+
+      100% {
+        transform: translateX(-50%)
+      }
+    }
+
+    /* PAGES */
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* SECTION BASE */
+    .section {
+      padding: 64px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-tag {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--dim);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-h {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.1;
+    }
+
+    .section-sub {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 560px;
+      margin-top: 8px;
+    }
+
+    /* MUMBAI SKYLINE SVG HERO BACKGROUND */
+    .skyline-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skyline-svg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      pointer-events: none;
+      opacity: 1;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 80px 32px 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      padding-bottom: 64px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      font-family: var(--mono);
+      font-size: 9px;
+      border: 1px solid var(--border2);
+      padding: 5px 10px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--bg);
+    }
+
+    .badge.live {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .hero-h1 {
+      font-size: 52px;
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .hero-h1 .a {
+      color: var(--orange);
+    }
+
+    .hero-h1 .d {
+      color: var(--dim);
+    }
+
+    .hero-p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 420px;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-p {
+      font-family: var(--mono);
+      font-size: 11px;
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      padding: 13px 24px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .btn-p:hover {
+      opacity: 0.88;
+    }
+
+    .btn-g {
+      font-family: var(--mono);
+      font-size: 11px;
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border2);
+      padding: 13px 24px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .btn-g:hover {
+      border-color: var(--muted);
+      color: var(--text);
+    }
+
+    .hero-crypto {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .crypto-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--dim);
+      letter-spacing: 0.1em;
+    }
+
+    .crypto-pills {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .cpill {
+      font-family: var(--mono);
+      font-size: 9px;
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      color: var(--muted);
+      background: var(--bg2);
+    }
+
+    /* TERMINAL */
+    .terminal {
+      border: 1px solid var(--border);
+      background: var(--bg2);
+    }
+
+    .term-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg3);
+    }
+
+    .tdot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--border2);
+    }
+
+    .tdot.on {
+      background: var(--orange);
+    }
+
+    .term-title {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--dim);
+      letter-spacing: 0.1em;
+      margin-left: 4px;
+    }
+
+    .term-body {
+      padding: 20px;
+      font-family: var(--mono);
+      font-size: 11px;
+      line-height: 2;
+    }
+
+    .tg {
+      color: var(--green);
+    }
+
+    .to {
+      color: var(--orange);
+    }
+
+    .td {
+      color: var(--dim);
+    }
+
+    .tw {
+      color: var(--text);
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 7px;
+      height: 12px;
+      background: var(--orange);
+      animation: blink 1s step-end infinite;
+      vertical-align: -1px;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0
+      }
+    }
+
+    /* STAT STRIP */
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stat-cell {
+      padding: 24px 28px;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat-cell:last-child {
+      border-right: none;
+    }
+
+    .stat-n {
+      font-family: var(--mono);
+      font-size: 28px;
+      color: var(--orange);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .stat-l {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--dim);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* BENTO */
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 32px;
+    }
+
+    .bc {
+      background: var(--bg);
+      padding: 24px;
+    }
+
+    .bc.s2 {
+      grid-column: span 2;
+    }
+
+    .bc.acc {
+      background: var(--orange-dim);
+    }
+
+    .bc-icon {
+      font-size: 20px;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+
+    .bc-n {
+      font-family: var(--mono);
+      font-size: 32px;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    .bc-t {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .bc-p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* PACKAGES */
+    .pkg-hero {
+      padding: 64px 32px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+    }
+
+    #packages-section {
+      scroll-margin-top: 68px;
+    }
+
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 32px;
+    }
+
+    .pkg {
+      background: var(--bg);
+      padding: 28px;
+    }
+
+    .pkg.feat {
+      background: var(--orange-dim);
+    }
+
+    .pkg-n {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--dim);
+      letter-spacing: 0.15em;
+      margin-bottom: 20px;
+    }
+
+    .pkg-name {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .pkg-price {
+      font-size: 38px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .pkg-price sup {
+      font-size: 18px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .pkg-price sub {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .pkg-tag {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .rec {
+      font-family: var(--mono);
+      font-size: 9px;
+      background: var(--orange);
+      color: #fff;
+      padding: 3px 10px;
+      letter-spacing: 0.1em;
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+
+    .pkg-list {
+      list-style: none;
+    }
+
+    .pkg-list li {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+      line-height: 1.4;
+    }
+
+    .pk {
+      color: var(--orange);
+    }
+
+    .pkg-cta {
+      display: block;
+      width: 100%;
+      margin-top: 24px;
+      padding: 12px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      background: transparent;
+      border: 1px solid var(--border2);
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .pkg-cta:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .pkg.feat .pkg-cta {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+    }
+
+    .pkg.feat .pkg-cta:hover {
+      opacity: 0.88;
+    }
+
+    /* GUIDE */
+    .guide-hero {
+      padding: 64px 32px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 32px;
+    }
+
+    .guide-cell {
+      background: var(--bg);
+      padding: 28px;
+    }
+
+    .guide-tag {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--orange);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .guide-t {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .guide-p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* DIWALI */
+    .diwali-section {
+      padding: 64px 32px;
+      border-bottom: 1px solid var(--border);
+      background: var(--orange-dim);
+    }
+
+    .diwali-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 32px;
+    }
+
+    .diwali-h {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .diwali-h .a {
+      color: var(--orange);
+    }
+
+    .diwali-p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    /* ABOUT */
+    .about-hero {
+      padding: 64px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 48px;
+    }
+
+    .about-h {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .about-p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .team-cell {
+      border: 1px solid var(--border);
+      padding: 24px;
+      margin-top: 24px;
+      background: var(--bg2);
+    }
+
+    .team-name {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .team-role {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--orange);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .team-p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .devcon-block {
+      border: 1px solid var(--border);
+      padding: 24px;
+      margin-top: 24px;
+      background: var(--bg2);
+    }
+
+    .devcon-h {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--orange);
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+    }
+
+    .devcon-p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* CONTACT */
+    .contact-section {
+      padding: 64px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      margin-top: 40px;
+    }
+
+    .contact-h {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .contact-p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .contact-info {
+      list-style: none;
+    }
+
+    .contact-info li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .ci-icon {
+      font-size: 16px;
+      color: var(--orange);
+      margin-top: 1px;
+    }
+
+    .ci-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--dim);
+      letter-spacing: 0.1em;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .ci-val {
+      color: var(--muted);
+    }
+
+    .form-wrap {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 28px;
+    }
+
+    .f-group {
+      margin-bottom: 16px;
+    }
+
+    .f-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--dim);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .f-in {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 13px;
+      padding: 10px 12px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .f-in:focus {
+      border-color: var(--orange);
+    }
+
+    .f-sel {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 13px;
+      padding: 10px 12px;
+      outline: none;
+      appearance: none;
+    }
+
+    .f-ta {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 13px;
+      padding: 10px 12px;
+      outline: none;
+      height: 80px;
+      resize: vertical;
+    }
+
+    .f-sub {
+      width: 100%;
+      padding: 13px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--orange);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+
+    .f-sub:hover {
+      opacity: 0.88;
+    }
+
+    .f-note {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--dim);
+      margin-top: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    .success-msg {
+      display: none;
+      border: 1px solid var(--green);
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 12px;
+      margin-top: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 24px 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: var(--bg);
+    }
+
+    .footer-l {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--dim);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-r {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--dim);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-link {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--dim);
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .footer-link:hover {
+      color: var(--muted);
+    }
+
+    /* INFO BLOCKS */
+    .info-block {
+      border: 1px solid var(--border);
+      padding: 20px;
+      background: var(--bg2);
+    }
+
+    .info-tag {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--orange);
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+    }
+
+    /* CULTURE COLS */
+    .culture-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .culture-col {
+      background: var(--bg);
+      padding: 24px;
+    }
+
+    .cc-tag {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--orange);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* SLIDESHOW */
+    .slideshow-section {
+      padding: 64px 32px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    .slideshow-container {
+      max-width: 800px;
+      position: relative;
+      margin: 32px auto 0 auto;
+      border: 1px solid var(--border);
+      background: var(--bg2);
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+      position: relative;
+    }
+
+    .slide img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: cover;
+    }
+
+    .slide-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(8, 8, 8, 0.85);
+      border-top: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 12px 16px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* Next & previous buttons */
+    .slideshow-prev,
+    .slideshow-next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      margin-top: -22px;
+      padding: 16px;
+      color: var(--text);
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.3s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      background-color: rgba(8, 8, 8, 0.4);
+      border: 1px solid var(--border);
+    }
+
+    .slideshow-next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .slideshow-prev:hover,
+    .slideshow-next:hover {
+      background-color: var(--orange);
+      color: #fff;
+    }
+
+    /* The dots/bullets/indicators */
+    .dot-container {
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .slideshow-dot {
+      cursor: pointer;
+      height: 8px;
+      width: 8px;
+      margin: 0 4px;
+      background-color: var(--border2);
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .slideshow-dot.active,
+    .slideshow-dot:hover {
+      background-color: var(--orange);
+    }
+
+    /* Fading animation */
+    .fade {
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: .4
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    /* MENU TOGGLE BUTTON (Hidden on desktop) */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 8px;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s;
+      height: 52px;
+      border-left: 1px solid var(--border);
+    }
+
+    .menu-toggle:hover {
+      color: var(--orange);
+    }
+
+    /* CONVERTED INLINE GRIDS */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 32px;
+    }
+
+    .crypto-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 32px;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 28px;
+    }
+
+    .facts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE DESIGN & MEDIA QUERIES
+       ========================================================================== */
+
+    /* TABLET LANDSCAPE / SMALL LAPTOP BREAKPOINT (max-width: 1024px) */
+    @media (max-width: 1024px) {
+
+      .section,
+      .guide-hero,
+      .pkg-hero,
+      .about-hero,
+      .contact-section,
+      .diwali-section,
+      .slideshow-section {
+        padding: 48px 24px;
+      }
+
+      .hero {
+        padding: 60px 24px 0;
+      }
+
+      .hero-grid {
+        gap: 32px;
+      }
+
+      .bento {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* TABLET PORTRAIT / MOBILE NAVIGATION BREAKPOINT (max-width: 900px) { */
+    @media (max-width: 900px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 52px;
+        right: -280px;
+        width: 280px;
+        height: calc(100vh - 52px);
+        background: rgba(15, 15, 15, 0.95);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-left: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 99;
+      }
+
+      [data-theme="light"] .nav-links {
+        background: rgba(237, 232, 222, 0.98);
+      }
+
+      .nav-links.open {
+        right: 0;
+      }
+
+      .nav-link {
+        width: 100%;
+        height: 60px;
+        border-left: none;
+        border-bottom: 1px solid var(--border);
+        padding: 0 24px;
+        font-size: 11px;
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-cta {
+        width: 100%;
+        height: 60px;
+        border-left: none;
+        border-bottom: 1px solid var(--border);
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background: var(--orange);
+      }
+
+      /* Stack grids that become too squished in 2-3 columns */
+      .hero-grid,
+      .contact-grid,
+      .about-grid,
+      .diwali-grid,
+      .why-grid,
+      .overview-grid,
+      .pkg-grid,
+      .culture-cols {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .pkg.feat {
+        grid-column: span 1;
+      }
+
+      /* Stat strip 2 columns layout with clean borders */
+      .stat-strip {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat-cell {
+        border-right: none;
+        border-bottom: none;
+      }
+
+      .stat-cell:nth-child(1) {
+        border-right: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .stat-cell:nth-child(2) {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .stat-cell:nth-child(3) {
+        border-right: 1px solid var(--border);
+      }
+    }
+
+    /* SMARTPHONES (max-width: 600px) */
+    @media (max-width: 600px) {
+
+      .section,
+      .guide-hero,
+      .pkg-hero,
+      .about-hero,
+      .contact-section,
+      .diwali-section,
+      .slideshow-section {
+        padding: 40px 16px;
+      }
+
+      .hero {
+        padding: 40px 16px 0;
+      }
+
+      .hero-inner {
+        padding-bottom: 40px;
+      }
+
+      /* Stack bento & guide */
+      .bento,
+      .guide-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bc.s2 {
+        grid-column: span 1;
+      }
+
+      /* Typography adjustments */
+      .hero-h1 {
+        font-size: clamp(32px, 8vw, 44px);
+      }
+
+      .section-h {
+        font-size: 24px;
+      }
+
+      .diwali-h {
+        font-size: 26px;
+      }
+
+      /* Crop the skyline background cleanly instead of making it tiny */
+      .skyline-svg {
+        height: 140px;
+        width: auto;
+        min-width: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      /* Make footer align vertically on mobile */
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 32px 16px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    /* SMALL MOBILE BREAKPOINT (max-width: 400px) */
+    @media (max-width: 400px) {
+      .stat-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-cell {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 16px 20px;
+      }
+
+      .stat-cell:last-child {
+        border-bottom: none;
+      }
+
+      .crypto-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .facts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-logo" onclick="showPage('home')">
+      ONGROUND.XYZ // MORPHINE LABS
+    </div>
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Navigation">
+      <i class="ti ti-menu"></i>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <span class="nav-link active" data-page="home" onclick="showPage('home')">Home</span>
+      <span class="nav-link" data-page="packages" onclick="showPackages()">Packages</span>
+      <span class="nav-link" data-page="mumbai" onclick="showPage('mumbai')">Mumbai Guide</span>
+      <span class="nav-link" data-page="about" onclick="showPage('about')">About</span>
+      <span class="nav-link" data-page="contact" onclick="showPage('contact')">Contact</span>
+
+      <button class="nav-cta" onclick="showPage('contact')">Book Now</button>
+    </div>
+  </nav>
+
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-item">DEVCON VIII · MUMBAI · NOV 2–6 2026</span>
+      <span class="ticker-item">///</span>
+      <span class="ticker-item">IBW · NOV 1–2 · SIDE EVENTS</span>
+      <span class="ticker-item">///</span>
+      <span class="ticker-item">DIWALI · NOV 7+ · FESTIVAL OF LIGHTS</span>
+      <span class="ticker-item">///</span>
+      <span class="ticker-item">WE ACCEPT BTC · ETH · USDC · SOL </span>
+      <span class="ticker-item">///</span>
+      <span class="ticker-item">24/7 LOCAL SUPPORT · TRUSTED TEAM </span>
+      <span class="ticker-item">///</span>
+      <span class="ticker-item">DEVCON VIII · MUMBAI · NOV 2–6 2026</span>
+      <span class="ticker-item">///</span>
+      <span class="ticker-item">IBW · NOV 1–2 · SIDE EVENTS</span>
+      <span class="ticker-item">///</span>
+      <span class="ticker-item">DIWALI · NOV 7+ · FESTIVAL OF LIGHTS</span>
+      <span class="ticker-item">///</span>
+      <span class="ticker-item">WE ACCEPT BTC · ETH · USDC · SOL </span>
+      <span class="ticker-item">///</span>
+      <span class="ticker-item">24/7 LOCAL SUPPORT · TRUSTED TEAM </span>
+      <span class="ticker-item">///</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ HOME ═══════════════════════════════════ -->
+  <div class="page active" id="page-home">
+
+    <!-- HERO WITH MUMBAI SKYLINE -->
+    <div class="hero skyline-wrap">
+      <!-- Mumbai Skyline SVG - outline only monuments -->
+      <svg class="skyline-svg" viewBox="0 0 1400 320" xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMax meet">
+        <defs>
+          <linearGradient id="skyGlow" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="var(--skyline-glow)" stop-opacity="0" />
+            <stop offset="100%" stop-color="var(--skyline-glow)" stop-opacity="1" />
+          </linearGradient>
+        </defs>
+        <!-- Background glow -->
+        <rect width="1400" height="320" fill="url(#skyGlow)" />
+
+        <!-- === BANDRA-WORLI SEA LINK (cable stay bridge, left side) === -->
+        <g stroke="var(--skyline-stroke)" stroke-width="1.2" fill="none">
+          <!-- Road deck -->
+          <line x1="0" y1="240" x2="180" y2="240" />
+          <!-- Left tower -->
+          <rect x="55" y="140" width="12" height="100" fill="var(--skyline-fill)" stroke="var(--skyline-stroke)"
+            stroke-width="1.2" />
+          <!-- Left tower top cross -->
+          <line x1="61" y1="140" x2="61" y2="120" />
+          <line x1="52" y1="128" x2="70" y2="128" />
+          <!-- Right tower -->
+          <rect x="113" y="148" width="12" height="92" fill="var(--skyline-fill)" stroke="var(--skyline-stroke)"
+            stroke-width="1.2" />
+          <line x1="119" y1="148" x2="119" y2="128" />
+          <line x1="110" y1="136" x2="128" y2="136" />
+          <!-- Cables left tower -->
+          <line x1="61" y1="122" x2="20" y2="240" />
+          <line x1="61" y1="122" x2="40" y2="240" />
+          <line x1="61" y1="122" x2="56" y2="240" />
+          <line x1="61" y1="122" x2="72" y2="240" />
+          <line x1="61" y1="122" x2="90" y2="240" />
+          <!-- Cables right tower -->
+          <line x1="119" y1="130" x2="80" y2="240" />
+          <line x1="119" y1="130" x2="100" y2="240" />
+          <line x1="119" y1="130" x2="114" y2="240" />
+          <line x1="119" y1="130" x2="128" y2="240" />
+          <line x1="119" y1="130" x2="148" y2="240" />
+          <line x1="119" y1="130" x2="170" y2="240" />
+          <!-- Road continues -->
+          <line x1="180" y1="240" x2="240" y2="240" />
+        </g>
+
+        <!-- === BKC OFFICE TOWERS (devcon venue area) === -->
+        <g fill="var(--skyline-fill)" stroke="var(--skyline-stroke)" stroke-width="1.2">
+          <!-- Tower 1 - tall glass -->
+          <rect x="230" y="100" width="28" height="140" />
+          <line x1="244" y1="100" x2="244" y2="240" />
+          <!-- windows -->
+          <rect x="234" y="108" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="242" y="108" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="250" y="108" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="234" y="120" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="242" y="120" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="250" y="120" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="234" y="132" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="242" y="132" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="250" y="132" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="234" y="144" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="242" y="144" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="250" y="144" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <!-- antenna -->
+          <line x1="244" y1="100" x2="244" y2="82" stroke="var(--orange)" stroke-width="1.5" />
+          <circle cx="244" cy="82" r="2" fill="var(--orange)" />
+
+          <!-- Tower 2 - stepped -->
+          <rect x="264" y="130" width="22" height="110" />
+          <rect x="267" y="115" width="16" height="25" />
+          <rect x="270" y="105" width="10" height="20" />
+          <rect x="234" y="168" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+
+          <!-- Tower 3 -->
+          <rect x="292" y="150" width="18" height="90" />
+          <rect x="295" y="138" width="12" height="20" />
+
+          <!-- Tower 4 - wide commercial -->
+          <rect x="316" y="160" width="32" height="80" />
+          <line x1="332" y1="160" x2="332" y2="240" />
+          <!-- windows row -->
+          <rect x="320" y="168" width="5" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="329" y="168" width="5" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="338" y="168" width="5" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="320" y="178" width="5" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="329" y="178" width="5" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="338" y="178" width="5" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="320" y="188" width="5" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="329" y="188" width="5" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="338" y="188" width="5" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+        </g>
+
+        <!-- === NESCO / GOREGAON CONVENTION (Devcon venue) === -->
+        <g fill="var(--skyline-fill)" stroke="var(--skyline-stroke)" stroke-width="1.2">
+          <rect x="360" y="170" width="60" height="70" />
+          <!-- curved roof suggestion -->
+          <path d="M360,170 Q390,155 420,170" fill="var(--skyline-fill)" stroke="var(--skyline-stroke)"
+            stroke-width="1.2" />
+          <!-- label indicator -->
+          <line x1="390" y1="153" x2="390" y2="140" stroke="var(--orange)" stroke-width="0.8" stroke-dasharray="3,2" />
+          <rect x="370" y="135" width="40" height="9" fill="var(--orange)" rx="1" />
+          <text x="390" y="142" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="5" fill="#fff"
+            letter-spacing="0.05em">DEVCON VENUE</text>
+          <!-- doors -->
+          <rect x="378" y="215" width="10" height="25" fill="none" stroke="var(--skyline-stroke)" stroke-width="1" />
+          <rect x="392" y="215" width="10" height="25" fill="none" stroke="var(--skyline-stroke)" stroke-width="1" />
+          <!-- windows -->
+          <rect x="365" y="178" width="8" height="6" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="377" y="178" width="8" height="6" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="407" y="178" width="8" height="6" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="365" y="190" width="8" height="6" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <rect x="407" y="190" width="8" height="6" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+        </g>
+
+        <!-- === RESIDENTIAL BLOCKS (Andheri/Goregaon area) === -->
+        <g fill="var(--skyline-fill)" stroke="var(--skyline-stroke)" stroke-width="1.2">
+          <rect x="430" y="140" width="20" height="100" />
+          <rect x="454" y="155" width="16" height="85" />
+          <rect x="474" y="125" width="22" height="115" />
+          <!-- windows -->
+          <rect x="434" y="148" width="4" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="441" y="148" width="4" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="434" y="158" width="4" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="441" y="158" width="4" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="478" y="133" width="4" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="485" y="133" width="4" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="478" y="143" width="4" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="485" y="143" width="4" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="478" y="153" width="4" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="485" y="153" width="4" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <line x1="485" y1="125" x2="485" y2="108" stroke="var(--skyline-stroke)" stroke-width="1" />
+        </g>
+
+        <!-- === CHHATRAPATI SHIVAJI TERMINUS (Gothic arch station) === -->
+        <g fill="var(--skyline-fill)" stroke="var(--skyline-stroke)" stroke-width="1.2">
+          <!-- Base building -->
+          <rect x="520" y="175" width="90" height="65" />
+          <!-- Central dome -->
+          <ellipse cx="565" cy="160" rx="18" ry="20" fill="var(--skyline-fill)" stroke="var(--skyline-stroke)"
+            stroke-width="1.2" />
+          <!-- Dome spire -->
+          <line x1="565" y1="140" x2="565" y2="120" />
+          <polygon points="561,120 565,108 569,120" fill="var(--skyline-fill)" stroke="var(--skyline-stroke)"
+            stroke-width="1" />
+          <!-- Turrets -->
+          <rect x="523" y="162" width="12" height="13" />
+          <rect x="597" y="162" width="12" height="13" />
+          <!-- Small turret spires -->
+          <polygon points="525,162 529,152 533,162" fill="var(--skyline-fill)" stroke="var(--skyline-stroke)"
+            stroke-width="1" />
+          <polygon points="599,162 603,152 607,162" fill="var(--skyline-fill)" stroke="var(--skyline-stroke)"
+            stroke-width="1" />
+          <!-- Gothic arched windows -->
+          <path d="M538,205 L538,195 Q538,188 544,188 Q550,188 550,195 L550,205" fill="none"
+            stroke="var(--skyline-stroke)" stroke-width="1" />
+          <path d="M558,205 L558,195 Q558,188 564,188 Q570,188 570,195 L570,205" fill="none"
+            stroke="var(--skyline-stroke)" stroke-width="1" />
+          <path d="M578,205 L578,195 Q578,188 584,188 Q590,188 590,195 L590,205" fill="none"
+            stroke="var(--skyline-stroke)" stroke-width="1" />
+          <!-- Ornate clock -->
+          <circle cx="565" cy="178" r="6" fill="none" stroke="var(--orange)" stroke-width="1" />
+          <line x1="565" y1="174" x2="565" y2="172" stroke="var(--orange)" stroke-width="0.8" />
+          <line x1="567" y1="178" x2="569" y2="178" stroke="var(--orange)" stroke-width="0.8" />
+        </g>
+
+        <!-- === GATEWAY OF INDIA (Arch monument) === -->
+        <g fill="var(--skyline-fill)" stroke="var(--skyline-stroke)" stroke-width="1.2">
+          <!-- Base platform -->
+          <rect x="650" y="220" width="80" height="20" />
+          <!-- Main arch body -->
+          <rect x="660" y="165" width="60" height="55" />
+          <!-- The great arch -->
+          <path d="M672,220 L672,180 Q672,160 690,160 Q708,160 708,180 L708,220" fill="var(--skyline-fill)"
+            stroke="var(--skyline-stroke)" stroke-width="1.5" />
+          <!-- Arch cutout (opening) -->
+          <path d="M677,220 L677,182 Q677,166 690,166 Q703,166 703,182 L703,220" fill="var(--bg)" stroke="none" />
+          <!-- Arch outline re-draw -->
+          <path d="M677,220 L677,182 Q677,166 690,166 Q703,166 703,182 L703,220" fill="none"
+            stroke="var(--skyline-stroke)" stroke-width="1" />
+          <!-- Side towers -->
+          <rect x="655" y="175" width="14" height="45" />
+          <polygon points="655,175 662,162 669,175" fill="var(--skyline-fill)" stroke="var(--skyline-stroke)"
+            stroke-width="1" />
+          <rect x="711" y="175" width="14" height="45" />
+          <polygon points="711,175 718,162 725,175" fill="var(--skyline-fill)" stroke="var(--skyline-stroke)"
+            stroke-width="1" />
+          <!-- Ornamental detail -->
+          <line x1="660" y1="210" x2="720" y2="210" stroke="var(--skyline-stroke)" stroke-width="0.8" />
+          <line x1="660" y1="202" x2="720" y2="202" stroke="var(--skyline-stroke)" stroke-width="0.6" />
+          <!-- Label -->
+          <text x="690" y="250" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="5.5"
+            fill="var(--dim)" letter-spacing="0.08em">GATEWAY OF INDIA</text>
+        </g>
+
+        <!-- === TAJ MAHAL PALACE HOTEL (beside Gateway) === -->
+        <g fill="var(--skyline-fill)" stroke="var(--skyline-stroke)" stroke-width="1.2">
+          <!-- Main body -->
+          <rect x="742" y="165" width="72" height="75" />
+          <!-- Central dome -->
+          <ellipse cx="778" cy="150" rx="14" ry="17" fill="var(--skyline-fill)" stroke="var(--skyline-stroke)"
+            stroke-width="1.2" />
+          <line x1="778" y1="133" x2="778" y2="118" />
+          <circle cx="778" cy="117" r="3" fill="var(--orange)" stroke="none" />
+          <!-- Corner turrets -->
+          <rect x="742" y="170" width="10" height="70" />
+          <ellipse cx="747" cy="168" rx="7" ry="8" fill="var(--skyline-fill)" stroke="var(--skyline-stroke)"
+            stroke-width="1" />
+          <rect x="804" y="170" width="10" height="70" />
+          <ellipse cx="809" cy="168" rx="7" ry="8" fill="var(--skyline-fill)" stroke="var(--skyline-stroke)"
+            stroke-width="1" />
+          <!-- Middle turrets -->
+          <rect x="762" y="175" width="8" height="65" />
+          <ellipse cx="766" cy="173" rx="5" ry="6" fill="var(--skyline-fill)" stroke="var(--skyline-stroke)"
+            stroke-width="1" />
+          <rect x="786" y="175" width="8" height="65" />
+          <ellipse cx="790" cy="173" rx="5" ry="6" fill="var(--skyline-fill)" stroke="var(--skyline-stroke)"
+            stroke-width="1" />
+          <!-- Windows -->
+          <path d="M754,195 L754,188 Q754,184 758,184 Q762,184 762,188 L762,195" fill="none"
+            stroke="var(--skyline-stroke)" stroke-width="0.8" />
+          <path d="M772,195 L772,188 Q772,184 776,184 Q780,184 780,188 L780,195" fill="none"
+            stroke="var(--skyline-stroke)" stroke-width="0.8" />
+          <path d="M794,195 L794,188 Q794,184 798,184 Q802,184 802,188 L802,195" fill="none"
+            stroke="var(--skyline-stroke)" stroke-width="0.8" />
+          <path d="M754,210 L754,203 Q754,199 758,199 Q762,199 762,203 L762,210" fill="none"
+            stroke="var(--skyline-stroke)" stroke-width="0.8" />
+          <path d="M794,210 L794,203 Q794,199 798,199 Q802,199 802,203 L802,210" fill="none"
+            stroke="var(--skyline-stroke)" stroke-width="0.8" />
+          <!-- Taj label -->
+          <text x="778" y="250" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="5.5"
+            fill="var(--dim)" letter-spacing="0.08em">TAJ MAHAL PALACE</text>
+        </g>
+
+        <!-- === MARINE DRIVE HIGHRISES (Art deco buildings) === -->
+        <g fill="var(--skyline-fill)" stroke="var(--skyline-stroke)" stroke-width="1.2">
+          <rect x="840" y="150" width="20" height="90" />
+          <rect x="844" y="142" width="12" height="16" />
+          <!-- art deco stepped top -->
+          <rect x="848" y="136" width="4" height="10" />
+          <rect x="864" y="160" width="18" height="80" />
+          <rect x="867" y="150" width="12" height="18" />
+          <rect x="886" y="140" width="22" height="100" />
+          <rect x="889" y="128" width="16" height="18" />
+          <rect x="892" y="118" width="10" height="14" />
+          <!-- Art deco windows grid -->
+          <rect x="844" y="166" width="3" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="851" y="166" width="3" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="844" y="176" width="3" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="851" y="176" width="3" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="890" y="148" width="3" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="897" y="148" width="3" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="890" y="158" width="3" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="897" y="158" width="3" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="890" y="168" width="3" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="897" y="168" width="3" height="4" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+        </g>
+
+        <!-- === MODERN MUMBAI TOWERS (Nariman Point) === -->
+        <g fill="var(--skyline-fill)" stroke="var(--skyline-stroke)" stroke-width="1.2">
+          <!-- Air India / Express Towers style -->
+          <rect x="918" y="110" width="26" height="130" />
+          <rect x="922" y="100" width="18" height="16" />
+          <rect x="926" y="90" width="10" height="14" />
+          <line x1="931" y1="90" x2="931" y2="72" stroke="var(--skyline-stroke)" stroke-width="1" />
+          <!-- Antenna glow -->
+          <circle cx="931" cy="72" r="2" fill="var(--orange)" opacity="0.8" />
+          <!-- Windows -->
+          <rect x="922" y="118" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="929" y="118" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="936" y="118" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="922" y="130" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="929" y="130" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="936" y="130" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="922" y="142" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="929" y="142" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="936" y="142" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+
+          <rect x="948" y="130" width="22" height="110" />
+          <rect x="951" y="118" width="16" height="18" />
+          <rect x="974" y="120" width="18" height="120" />
+          <rect x="996" y="145" width="24" height="95" />
+          <rect x="999" y="133" width="18" height="18" />
+          <rect x="1002" y="122" width="12" height="14" />
+        </g>
+
+        <!-- === DHIRUBHAI AMBANI / ANTILIA-INSPIRED SUPERTALL === -->
+        <g fill="var(--skyline-fill)" stroke="var(--skyline-stroke)" stroke-width="1.2">
+          <rect x="1032" y="80" width="28" height="160" />
+          <!-- Stacked floors with setbacks -->
+          <rect x="1034" y="76" width="24" height="8" />
+          <rect x="1036" y="68" width="20" height="10" />
+          <rect x="1038" y="58" width="16" height="12" />
+          <rect x="1040" y="48" width="12" height="12" />
+          <!-- Top mast -->
+          <line x1="1046" y1="48" x2="1046" y2="28" stroke="var(--orange)" stroke-width="1.5" />
+          <circle cx="1046" cy="28" r="2.5" fill="var(--orange)" />
+          <!-- Horizontal bands (Antilia-style) -->
+          <line x1="1032" y1="98" x2="1060" y2="98" stroke="var(--skyline-stroke)" stroke-width="0.8" />
+          <line x1="1032" y1="116" x2="1060" y2="116" stroke="var(--skyline-stroke)" stroke-width="0.8" />
+          <line x1="1032" y1="134" x2="1060" y2="134" stroke="var(--skyline-stroke)" stroke-width="0.8" />
+          <line x1="1032" y1="152" x2="1060" y2="152" stroke="var(--skyline-stroke)" stroke-width="0.8" />
+          <line x1="1032" y1="170" x2="1060" y2="170" stroke="var(--skyline-stroke)" stroke-width="0.8" />
+          <line x1="1032" y1="188" x2="1060" y2="188" stroke="var(--skyline-stroke)" stroke-width="0.8" />
+          <!-- Windows -->
+          <rect x="1036" y="104" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="1044" y="104" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+          <rect x="1052" y="104" width="4" height="5" fill="none" stroke="var(--skyline-stroke)" stroke-width="0.5" />
+        </g>
+
+        <!-- === MORE SKYLINE FILLER (South Mumbai dense) === -->
+        <g fill="var(--skyline-fill)" stroke="var(--skyline-stroke)" stroke-width="1.2">
+          <rect x="1068" y="160" width="15" height="80" />
+          <rect x="1087" y="145" width="18" height="95" />
+          <rect x="1109" y="155" width="14" height="85" />
+          <rect x="1127" y="135" width="20" height="105" />
+          <line x1="1137" y1="135" x2="1137" y2="118" stroke="var(--skyline-stroke)" stroke-width="1" />
+          <rect x="1151" y="150" width="16" height="90" />
+          <rect x="1171" y="140" width="22" height="100" />
+          <rect x="1174" y="128" width="16" height="18" />
+          <rect x="1197" y="155" width="14" height="85" />
+          <rect x="1215" y="130" width="20" height="110" />
+          <line x1="1225" y1="130" x2="1225" y2="112" stroke="var(--skyline-stroke)" stroke-width="1" />
+          <circle cx="1225" cy="112" r="1.5" fill="var(--orange)" opacity="0.6" />
+          <rect x="1239" y="160" width="16" height="80" />
+          <rect x="1259" y="148" width="18" height="92" />
+          <rect x="1281" y="138" width="24" height="102" />
+          <rect x="1284" y="126" width="18" height="18" />
+          <rect x="1309" y="155" width="15" height="85" />
+          <rect x="1328" y="145" width="18" height="95" />
+          <rect x="1350" y="160" width="20" height="80" />
+          <rect x="1374" y="150" width="26" height="90" />
+        </g>
+
+        <!-- Ground line -->
+        <line x1="0" y1="240" x2="1400" y2="240" stroke="var(--skyline-stroke)" stroke-width="1.5" />
+        <!-- Water / sea reflection -->
+        <rect x="0" y="241" width="1400" height="79" fill="var(--skyline-fill)" stroke="none" />
+        <line x1="0" y1="260" x2="1400" y2="260" stroke="var(--skyline-stroke)" stroke-width="0.4" opacity="0.4" />
+        <line x1="0" y1="278" x2="1400" y2="278" stroke="var(--skyline-stroke)" stroke-width="0.3" opacity="0.3" />
+        <line x1="0" y1="294" x2="1400" y2="294" stroke="var(--skyline-stroke)" stroke-width="0.25" opacity="0.2" />
+      </svg>
+
+      <div class="hero-inner">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-eyebrow">
+              <span class="badge live">// 24/7 ONGROUND ASSISTANCE</span>
+              <span class="badge">MUMBAI, INDIA</span>
+              <span class="badge">NOV 2026</span>
+            </div>
+            <h1 class="hero-h1">
+              ARRIVE.<br>
+              <span class="a">NAVIGATE.</span><br>
+              <span class="d">EXPERIENCE.</span>
+            </h1>
+            <p class="hero-p">Landing in Mumbai for DEVCON VIII? We're a local team that handles everything — from your
+              airport pickup at 2am to your Diwali evening after the conference ends.</p>
+            <div class="hero-actions">
+              <button class="btn-p" onclick="showPackages()">// View Packages</button>
+              <button class="btn-g" onclick="showPage('contact')">Book Now →</button>
+            </div>
+            <div class="hero-crypto">
+              <span class="crypto-label">PAYMENTS:</span>
+              <div class="crypto-pills">
+                <span class="cpill">BTC</span>
+                <span class="cpill">ETH</span>
+                <span class="cpill">USDC</span>
+                <span class="cpill">SOL</span>
+                <span class="cpill">FIAT</span>
+              </div>
+            </div>
+          </div>
+          <div class="terminal">
+            <div class="term-bar">
+              <div class="tdot on"></div>
+              <div class="tdot"></div>
+              <div class="tdot"></div>
+              <span class="term-title">ONGROUND // LIVE_STATUS</span>
+            </div>
+            <div class="term-body">
+              <div><span class="td">01 //</span> <span class="to">AIRPORT_PICKUP</span> <span class="tg">LIVE</span>
+              </div>
+              <div><span class="td">02 //</span> <span class="to">ONGROUND_ASSISTANT</span> <span
+                  class="tg">READY</span></div>
+              <div><span class="td">03 //</span> <span class="to">SIDE_EVENT_CURATION</span> <span
+                  class="tg">ACTIVE</span></div>
+              <div><span class="td">04 //</span> <span class="to">DOCTOR_ON_CALL</span> <span class="tg">24/7</span>
+              </div>
+              <div><span class="td">05 //</span> <span class="to">DIWALI_EXPERIENCE</span> <span class="tw">NOV
+                  7+</span></div>
+              <div><span class="td">06 //</span> <span class="to">WEB3_INTRODUCTIONS</span> <span class="tg">OPEN</span>
+              </div>
+              <div><span class="td">07 //</span> <span class="to">EMERGENCY_LINE</span> <span class="tg">LIVE</span>
+              </div>
+              <div><span class="td">08 //</span> <span class="to">CRYPTO_PAYMENTS</span> <span
+                  class="tg">ACCEPTED</span></div>
+              <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:12px;"><span
+                  class="td">&gt;</span> <span class="tg">READY TO MAKE YOUR DEVCON EXPERIENCE BETTER?</span> <span
+                  class="cursor"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat-cell"><span class="stat-n">7</span><span class="stat-l">Days of coverage</span></div>
+      <div class="stat-cell"><span class="stat-n">24/7</span><span class="stat-l">Local hotline</span></div>
+      <div class="stat-cell"><span class="stat-n">3</span><span class="stat-l">Experience tiers</span></div>
+      <div class="stat-cell"><span class="stat-n">∞</span><span class="stat-l">Local connections</span></div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag">// WHY THIS EXISTS</div>
+      <div class="section-h">Mumbai is incredible.<br>It can also break you.</div>
+      <p class="section-sub">Most international attendees land without a trusted local contact. We fix that — end to
+        end.</p>
+      <div class="bento">
+        <div class="bc s2 acc">
+          <div class="bc-icon"><i class="ti ti-plane-arrival"></i></div>
+          <div class="bc-t">Landing at 2am with no trusted pickup</div>
+          <div class="bc-p">Random cabs at CST or BKC exit, no idea of fair price, 20-hour flight behind you. We
+            eliminate this entirely — a known face is waiting with your name, SIM card in hand.</div>
+        </div>
+        <div class="bc">
+          <div class="bc-n">3x</div>
+          <div class="bc-t">Tourist tax</div>
+          <div class="bc-p">Average foreigner overpays 3x on transport. We know fair prices.</div>
+        </div>
+        <div class="bc">
+          <div class="bc-icon"><i class="ti ti-route"></i></div>
+          <div class="bc-t">Mumbai traffic</div>
+          <div class="bc-p">Notorious. One wrong turn and you miss the keynote you flew 20 hours for.</div>
+        </div>
+        <div class="bc">
+          <div class="bc-icon"><i class="ti ti-calendar-event"></i></div>
+          <div class="bc-t">Side event overload</div>
+          <div class="bc-p">200+ events during IBW and Devcon week. Most are noise. We filter signal.</div>
+        </div>
+        <div class="bc">
+          <div class="bc-icon"><i class="ti ti-heart"></i></div>
+          <div class="bc-t">Health abroad</div>
+          <div class="bc-p">Foreign stomach, unfamiliar food, no doctor contact. 24/7 medical access included.</div>
+        </div>
+        <div class="bc s2">
+          <div class="bc-icon"><i class="ti ti-sparkles"></i></div>
+          <div class="bc-t">Diwali is happening right after Devcon</div>
+          <div class="bc-p">One of the most extraordinary cultural events on the planet — happening the week you're
+            here. Without local guidance, most attendees miss it entirely. We make sure you don't.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" style="background:var(--bg2);">
+      <div class="section-h">Why Mumbai. Why November.</div>
+      <div class="why-grid">
+        <div style="background:var(--bg);padding:24px;">
+          <div
+            style="font-family:var(--mono);font-size:9px;color:var(--orange);letter-spacing:0.15em;margin-bottom:16px;">
+            // DEVCON VIII</div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.8;">Devcon is the annual Ethereum developer
+            conference — the most significant gathering in Web3. Builders, researchers, protocol teams, and visionaries
+            converge for five days of talks, workshops, and real conversations that shape the future of the internet.
+          </p>
+          <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-top:12px;">Mumbai marks a historic moment —
+            the first Devcon in South Asia, acknowledging India's massive and growing role in global Web3 development.
+          </p>
+        </div>
+        <div style="background:var(--bg);padding:24px;">
+          <div
+            style="font-family:var(--mono);font-size:9px;color:var(--orange);letter-spacing:0.15em;margin-bottom:16px;">
+            // THE NOVEMBER WINDOW</div>
+          <ul style="list-style:none;">
+            <li style="display:flex;gap:16px;padding:10px 0;border-bottom:1px solid var(--border);font-size:12px;"><span
+                style="font-family:var(--mono);font-size:10px;color:var(--orange);min-width:72px;">NOV 01–02</span><span
+                style="color:var(--muted);">India Blockchain Week — side events, builders, VCs</span></li>
+            <li style="display:flex;gap:16px;padding:10px 0;border-bottom:1px solid var(--border);font-size:12px;"><span
+                style="font-family:var(--mono);font-size:10px;color:var(--orange);min-width:72px;">NOV 02–06</span><span
+                style="color:var(--muted);">DEVCON VIII — main conference at JIO World Trade Center, Mumbai</span></li>
+            <li style="display:flex;gap:16px;padding:10px 0;border-bottom:1px solid var(--border);font-size:12px;"><span
+                style="font-family:var(--mono);font-size:10px;color:var(--orange);min-width:72px;">NOV 07+</span><span
+                style="color:var(--muted);">Diwali season — the festival of lights</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="pkg-hero" id="packages-section">
+      <div class="section-tag">// PACKAGES</div>
+      <div class="section-h">Choose your experience tier</div>
+      <p class="section-sub">All packages are priced per person. Crypto and fiat accepted.</p>
+      <div class="pkg-grid">
+        <div class="pkg">
+          <div class="pkg-n">01 // ESSENTIAL</div>
+          <div class="pkg-name">Essential</div>
+          <div class="pkg-price"><sup>$</sup>400<sub> / person</sub></div>
+          <div class="pkg-tag">The basics covered. Land informed, move confidently through Devcon week.</div>
+          <ul class="pkg-list">
+            <li><span class="pk">+</span> Pre-arrival info pack (visa, SIM, currency, packing)</li>
+            <li><span class="pk">+</span> Trusted airport pickup + SIM card activation</li>
+            <li><span class="pk">+</span> Orientation briefing on the drive from airport</li>
+            <li><span class="pk">+</span> 24/7 hotline access all week</li>
+            <li><span class="pk">+</span> Curated food guide (safe, great, late-night)</li>
+            <li><span class="pk">+</span> Side event calendar — filtered for signal</li>
+            <li><span class="pk">+</span> Devcon navigation guide + who to meet</li>
+            <li><span class="pk">+</span> Fair price benchmarks and tourist trap guide</li>
+            <li><span class="pk">+</span> Airport drop on departure</li>
+            <li><span class="pk">+</span> Gift and shopping recommendations</li>
+          </ul>
+          <button class="pkg-cta" onclick="showPage('contact')">// BOOK THIS TIER</button>
+        </div>
+        <div class="pkg feat">
+          <div class="rec">MOST POPULAR</div>
+          <div class="pkg-n">02 // EXPLORER</div>
+          <div class="pkg-name">Explorer</div>
+          <div class="pkg-price"><sup>$</sup>800<sub> / person</sub></div>
+          <div class="pkg-tag">Everything in Essential, plus Mumbai beyond the conference — city, culture, and real
+            connections.</div>
+          <ul class="pkg-list">
+            <li><span class="pk">+</span> Everything in Essential</li>
+            <li><span class="pk">+</span> Dedicated trusted driver for the full week</li>
+            <li><span class="pk">+</span> All venue-to-venue logistics handled</li>
+            <li><span class="pk">+</span> Group dinner coordination (up to 10 people)</li>
+            <li><span class="pk">+</span> Curated Mumbai experiences — no tourist traps</li>
+            <li><span class="pk">+</span> Dharavi tour (most requested by international visitors)</li>
+            <li><span class="pk">+</span> Coastal walks, Irani cafés, local culture moments</li>
+            <li><span class="pk">+</span> Diwali experience guidance and recommendations</li>
+            <li><span class="pk">+</span> Doctor on call — 24/7 access</li>
+            <li><span class="pk">+</span> Pharmacy and health guidance</li>
+            <li><span class="pk">+</span> Local Web3 founder and VC introductions</li>
+            <li><span class="pk">+</span> WhatsApp group with other attendees on the service</li>
+          </ul>
+          <button class="pkg-cta" onclick="showPage('contact')">// BOOK THIS TIER</button>
+        </div>
+        <div class="pkg">
+          <div class="pkg-n">03 // FULL EXPERIENCE</div>
+          <div class="pkg-name">Full Experience</div>
+          <div class="pkg-price"><sup>$</sup>1,500<sub> / person</sub></div>
+          <div class="pkg-tag">For founders and executives who need zero friction. Everything handled, all week.</div>
+          <ul class="pkg-list">
+            <li><span class="pk">+</span> Everything in Explorer</li>
+            <li><span class="pk">+</span> Personal on-ground assistant all week</li>
+            <li><span class="pk">+</span> Help accessing invite-only events</li>
+            <li><span class="pk">+</span> Indian media and journalist introductions</li>
+            <li><span class="pk">+</span> Curated 1-on-1 ecosystem introductions</li>
+            <li><span class="pk">+</span> Special Diwali group celebration</li>
+            <li><span class="pk">+</span> Ambulance on call — 24/7</li>
+            <li><span class="pk">+</span> Lost passport and legal emergency contacts</li>
+            <li><span class="pk">+</span> Flight change and travel emergency assistance</li>
+            <li><span class="pk">+</span> Tailoring experience (suit or kurta in 48 hours)</li>
+            <li><span class="pk">+</span> Goa or post-Devcon trip planning</li>
+            <li><span class="pk">+</span> Post-departure debrief and relationship continuity</li>
+          </ul>
+          <button class="pkg-cta" onclick="showPage('contact')">// BOOK THIS TIER</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="slideshow-section">
+      <div class="section-tag">// PAST EVENTS</div>
+      <div class="section-h">Glimpses of our previous experiences</div>
+      <p class="section-sub">Take a look at the developer panels, active hackathons, and networking sessions from our
+        past Web3 community events.</p>
+
+      <div class="slideshow-container">
+        <div class="slide fade">
+          <img src="./past_event_1.png" alt="Devcon Panel Discussion">
+          <div class="slide-caption">// DEVCON PANEL DISCUSSION</div>
+        </div>
+        <div class="slide fade">
+          <img src="./past_event_2.png" alt="Global Web3 Hackathon">
+          <div class="slide-caption">// GLOBAL WEB3 HACKATHON</div>
+        </div>
+        <div class="slide fade">
+          <img src="./past_event_3.png" alt="Builder Networking Meetup">
+          <div class="slide-caption">// BUILDER NETWORKING MEETUP</div>
+        </div>
+
+        <!-- Next & Previous buttons -->
+        <a class="slideshow-prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="slideshow-next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+
+      <div class="dot-container">
+        <span class="slideshow-dot" onclick="currentSlide(1)"></span>
+        <span class="slideshow-dot" onclick="currentSlide(2)"></span>
+        <span class="slideshow-dot" onclick="currentSlide(3)"></span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag">// CRYPTO PAYMENTS</div>
+      <div class="section-h">We're a Web3 team.<br>We accept Web3 payments.</div>
+      <p class="section-sub">Pay in crypto, fiat, or a combination. All payments confirmed on-chain. Invoices available
+        for any currency.</p>
+      <div class="crypto-grid">
+        <div style="background:var(--bg2);padding:20px;text-align:center;"><span
+            style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">BTC</span><span
+            style="font-family:var(--mono);font-size:9px;color:var(--dim);">Bitcoin</span></div>
+        <div style="background:var(--bg2);padding:20px;text-align:center;"><span
+            style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">ETH</span><span
+            style="font-family:var(--mono);font-size:9px;color:var(--dim);">Ethereum</span></div>
+        <div style="background:var(--bg2);padding:20px;text-align:center;"><span
+            style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">USDC</span><span
+            style="font-family:var(--mono);font-size:9px;color:var(--dim);">USD Coin</span></div>
+        <div style="background:var(--bg2);padding:20px;text-align:center;"><span
+            style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">SOL</span><span
+            style="font-family:var(--mono);font-size:9px;color:var(--dim);">Solana</span></div>
+        <div style="background:var(--bg2);padding:20px;text-align:center;"><span
+            style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">INR/USD</span><span
+            style="font-family:var(--mono);font-size:9px;color:var(--dim);">Fiat</span></div>
+      </div>
+      <div style="margin-top:12px;font-family:var(--mono);font-size:10px;color:var(--dim);">&gt; 50% deposit to confirm.
+        Balance due on arrival. Wallet address shared on booking confirmation.</div>
+    </div>
+
+    <div class="section" style="background:var(--bg2);">
+      <div class="section-tag">// FAQ</div>
+      <div class="section-h">Common questions</div>
+      <div style="margin-top:32px;border:1px solid var(--border);">
+        <div style="padding:20px 24px;border-bottom:1px solid var(--border);">
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">Can I book for a group?</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.7;">Yes. Group rates available for 3+ people
+            traveling together. Contact us for custom pricing.</div>
+        </div>
+        <div style="padding:20px 24px;border-bottom:1px solid var(--border);">
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">What if I only need specific
+            services?</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.7;">Reach out and we can discuss à la carte
+            options. Packages are designed for best value, but we're flexible.</div>
+        </div>
+        <div style="padding:20px 24px;border-bottom:1px solid var(--border);">
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">I'm staying longer than
+            Devcon week. Can coverage extend?</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.7;">Yes. Extensions for Diwali week, Goa, or other
+            India travel can be arranged at a daily rate.</div>
+        </div>
+        <div style="padding:20px 24px;">
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">Is this available for people
+            traveling with partners or family?</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.7;">Absolutely. We can arrange non-conference
+            activities for partners and family during conference hours.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ MUMBAI GUIDE ═══════════════════════════════════ -->
+  <div class="page" id="page-mumbai">
+    <div class="guide-hero">
+      <div class="section-tag">// MUMBAI FIELD GUIDE</div>
+      <div class="section-h">Know before you land</div>
+      <p class="section-sub">Mumbai is one of the world's great cities. Dense, loud, beautiful, and deeply human. Here's
+        what you need to know to navigate it well.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-tag">// CITY OVERVIEW</div>
+      <div class="section-h">Mumbai at a glance</div>
+      <div class="overview-grid">
+        <div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">Mumbai is the financial
+            capital of India — 21 million people on a narrow peninsula on the Arabian Sea. It's the home of Bollywood,
+            the country's largest stock exchange, some of the world's most important spiritual traditions, and now,
+            DEVCON VIII.</p>
+          <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;">The city operates on its own
+            logic. Traffic is chaotic but navigable. Food is extraordinary. People are warm. The gap between wealth and
+            poverty is visible on every street. It's a city that overwhelms and then captivates.</p>
+          <p style="font-size:13px;color:var(--muted);line-height:1.8;">November is one of the best times to visit —
+            post-monsoon, 25–30°C, humidity dropping, and the city feels alive without being punishing.</p>
+        </div>
+        <div>
+          <div class="info-block">
+            <div class="info-tag">// QUICK FACTS</div>
+            <div class="facts-grid">
+              <div style="padding:10px;background:var(--bg);"><span
+                  style="font-family:var(--mono);font-size:9px;color:var(--dim);display:block;">Population</span><span
+                  style="font-size:13px;color:var(--text);">21 million+</span></div>
+              <div style="padding:10px;background:var(--bg);"><span
+                  style="font-family:var(--mono);font-size:9px;color:var(--dim);display:block;">Currency</span><span
+                  style="font-size:13px;color:var(--text);">INR (₹)</span></div>
+              <div style="padding:10px;background:var(--bg);"><span
+                  style="font-family:var(--mono);font-size:9px;color:var(--dim);display:block;">Weather
+                  (Nov)</span><span style="font-size:13px;color:var(--text);">25–30°C</span></div>
+              <div style="padding:10px;background:var(--bg);"><span
+                  style="font-family:var(--mono);font-size:9px;color:var(--dim);display:block;">Time Zone</span><span
+                  style="font-size:13px;color:var(--text);">IST (UTC+5:30)</span></div>
+              <div style="padding:10px;background:var(--bg);"><span
+                  style="font-family:var(--mono);font-size:9px;color:var(--dim);display:block;">Language</span><span
+                  style="font-size:13px;color:var(--text);">Hindi / Marathi / English</span></div>
+              <div style="padding:10px;background:var(--bg);"><span
+                  style="font-family:var(--mono);font-size:9px;color:var(--dim);display:block;">Airport</span><span
+                  style="font-size:13px;color:var(--text);">BOM (CSMI)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" style="background:var(--bg2);">
+      <div class="section-tag">// TRANSPORT</div>
+      <div class="section-h">Getting around Mumbai</div>
+      <div class="guide-grid" style="margin-top:28px;">
+        <div class="guide-cell">
+          <div class="guide-tag">// Ola & Uber</div>
+          <div class="guide-t">App-based cabs</div>
+          <div class="guide-p">Work well. Always use the app — never negotiate at the airport exit. Surge pricing is
+            common 8–10am and 6–9pm.</div>
+        </div>
+        <div class="guide-cell">
+          <div class="guide-tag">// Auto Rickshaws</div>
+          <div class="guide-t">Three-wheelers</div>
+          <div class="guide-p">Suburbs only (not South Mumbai). Great for short distances. Insist on the meter or use
+            Ola Auto. Cheap and fast in narrow lanes.</div>
+        </div>
+        <div class="guide-cell">
+          <div class="guide-tag">// Local Train</div>
+          <div class="guide-t">The real Mumbai</div>
+          <div class="guide-p">Moves 8 million people daily. Overwhelming for first-timers. We don't recommend it unless
+            you're adventurous and we're with you.</div>
+        </div>
+        <div class="guide-cell">
+          <div class="guide-tag">// Our Driver Network</div>
+          <div class="guide-t">What we provide</div>
+          <div class="guide-p">Trusted, English-speaking drivers for the full week. No surge, no negotiation. Included
+            in Explorer and Full Experience packages.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag">// FOOD</div>
+      <div class="section-h">What to eat in Mumbai</div>
+      <div class="culture-cols" style="margin-top:28px;">
+        <div class="culture-col">
+          <div class="cc-tag">// Must Try</div>
+          <div style="margin-bottom:16px;">
+            <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;">Vada Pav</div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.6;">Mumbai's soul food. Spiced potato in a bread
+              bun. ₹15. Incredible.</div>
+          </div>
+          <div style="margin-bottom:16px;">
+            <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;">Bombay Sandwich</div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.6;">Layered, grilled, chutney-drenched. A
+              city-specific thing you won't find anywhere else.</div>
+          </div>
+          <div style="margin-bottom:16px;">
+            <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;">Koliwada Seafood</div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.6;">Mumbai is coastal. The pomfret, prawns, and
+              surmai are exceptional and underrated.</div>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;">Irani Café Breakfast</div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.6;">A uniquely Mumbai institution. Bun maska and
+              chai at Kyani & Co. Not optional.</div>
+          </div>
+        </div>
+        <div class="culture-col">
+          <div class="cc-tag">// Safe for Foreign Stomachs</div>
+          <div style="margin-bottom:16px;">
+            <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;">Bandra / BKC Restaurants
+            </div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.6;">Higher standards, filtered water,
+              international menus. Safe from day one.</div>
+          </div>
+          <div style="margin-bottom:16px;">
+            <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;">Hotel restaurants</div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.6;">Always safe. Reliable. Slightly boring but
+              fine while your stomach adjusts.</div>
+          </div>
+          <div style="margin-bottom:16px;">
+            <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;">Bottled water only</div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.6;">Never tap. Bisleri is the standard brand.
+              Available everywhere for ₹20.</div>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;">Carry ORS and Probiotics
+            </div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.6;">Even experienced India travelers get stomach
+              issues. Part of our Essential pack briefing.</div>
+          </div>
+        </div>
+        <div class="culture-col">
+          <div class="cc-tag">// Late Night (Devcon hours)</div>
+          <div style="margin-bottom:16px;">
+            <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;">BKC and Bandra West</div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.6;">Closest areas to venue with reliable
+              late-night options until 1–2am.</div>
+          </div>
+          <div style="margin-bottom:16px;">
+            <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;">Kebab stalls</div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.6;">The real late-night Mumbai experience. We'll
+              take you to the right ones.</div>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;">Swiggy / Zomato</div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.6;">India's food delivery apps. Available until
+              midnight+ in most areas.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="diwali-section">
+      <div class="section-tag">// DIWALI · FESTIVAL OF LIGHTS</div>
+      <div class="diwali-grid">
+        <div>
+          <h2 class="diwali-h">The world's most spectacular <span class="a">festival of light</span> — right after
+            Devcon.</h2>
+          <p class="diwali-p">Diwali is India's most significant cultural celebration. Five days of lights,
+            firecrackers, sweets, family gatherings, and spiritual significance. The victory of light over darkness.</p>
+          <p class="diwali-p">In Mumbai it transforms the city — every building lit with diyas, streets filled with
+            incense and sugar, fireworks visible from every rooftop. Unlike anything else in the world.</p>
+          <p class="diwali-p">Most Devcon attendees will still be in or near India when it begins. Our Full Experience
+            package includes a special group Diwali evening — real families, real celebrations, real Mumbai.</p>
+          <button class="btn-p" onclick="showPackages()" style="margin-top:8px;">See Full Experience
+            Package</button>
+        </div>
+        <div>
+          <div style="border:1px solid var(--border);padding:24px;background:var(--bg);">
+            <div
+              style="font-family:var(--mono);font-size:9px;color:var(--orange);letter-spacing:0.15em;margin-bottom:16px;">
+              // DIWALI 2026</div>
+            <ul style="list-style:none;">
+              <li style="display:flex;gap:16px;padding:10px 0;border-bottom:1px solid var(--border);font-size:12px;">
+                <span style="font-family:var(--mono);font-size:10px;color:var(--orange);min-width:64px;">NOV
+                  07</span><span style="color:var(--muted);">Dhanteras — gold, silver, prosperity</span>
+              </li>
+              <li style="display:flex;gap:16px;padding:10px 0;border-bottom:1px solid var(--border);font-size:12px;">
+                <span style="font-family:var(--mono);font-size:10px;color:var(--orange);min-width:64px;">NOV
+                  08</span><span style="color:var(--muted);">Choti Diwali — first fireworks begin</span>
+              </li>
+              <li style="display:flex;gap:16px;padding:10px 0;border-bottom:1px solid var(--border);font-size:12px;">
+                <span style="font-family:var(--mono);font-size:10px;color:var(--orange);min-width:64px;">NOV
+                  09</span><span style="color:var(--muted);">Diwali main day — peak celebrations</span>
+              </li>
+              <li style="display:flex;gap:16px;padding:10px 0;border-bottom:1px solid var(--border);font-size:12px;">
+                <span style="font-family:var(--mono);font-size:10px;color:var(--orange);min-width:64px;">NOV
+                  10</span><span style="color:var(--muted);">Govardhan Puja — community celebrations</span>
+              </li>
+              <li style="display:flex;gap:16px;padding:10px 0;font-size:12px;"><span
+                  style="font-family:var(--mono);font-size:10px;color:var(--orange);min-width:64px;">NOV 11</span><span
+                  style="color:var(--muted);">Bhai Dooj — family, sweets, endings</span></li>
+            </ul>
+            <div style="margin-top:12px;font-family:var(--mono);font-size:9px;color:var(--dim);">* Dates subject to
+              lunar calendar confirmation.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-tag">// EXPERIENCES</div>
+      <div class="section-h">Mumbai beyond the conference</div>
+      <div class="guide-grid" style="margin-top:28px;">
+        <div class="guide-cell">
+          <div class="guide-tag">// Dharavi</div>
+          <div class="guide-t">The most misunderstood place in India</div>
+          <div class="guide-p">A self-organized city of 1 million people with a $1B economy in leather, pottery, and
+            recycling. One of the most profound experiences in Mumbai. Context required before visiting.</div>
+        </div>
+        <div class="guide-cell">
+          <div class="guide-tag">// Marine Drive</div>
+          <div class="guide-t">The Queen's Necklace</div>
+          <div class="guide-p">A 3.6km promenade along the Arabian Sea. Best at sunset or after dark. One of the great
+            urban walks on earth. 45 minutes from BKC by car.</div>
+        </div>
+        <div class="guide-cell">
+          <div class="guide-tag">// Crawford Market</div>
+          <div class="guide-t">Where old Mumbai lives</div>
+          <div class="guide-p">A Victorian-era market overflowing with spices, flowers, and produce. The architecture
+            alone is worth the trip. Go early morning.</div>
+        </div>
+        <div class="guide-cell">
+          <div class="guide-tag">// Bandra</div>
+          <div class="guide-t">Where you want to be</div>
+          <div class="guide-p">Cafés, galleries, street art, colonial churches, the best bar scene in the city. Close to
+            the Devcon venue. Where most attendees will spend their evenings.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ ABOUT ═══════════════════════════════════ -->
+  <div class="page" id="page-about">
+    <div class="about-hero">
+      <div class="section-tag">// ABOUT</div>
+      <div class="section-h">Who we are</div>
+      <p class="section-sub">Morphine Labs is a Mumbai-based team at the intersection of Web3 and real-world operations.
+        We built Devcon India Experience to solve a problem we understood intimately.</p>
+      <div class="about-grid">
+        <div>
+          <div class="about-h">Why we built this</div>
+          <p class="about-p">When DEVCON VIII was announced for Mumbai, we saw a clear gap. Thousands of international
+            attendees would be coming to India — many for the first time — with no local infrastructure to help them
+            navigate the city, the culture, or the conference week effectively.</p>
+          <p class="about-p">We've spent years in Mumbai's Web3 ecosystem. We know the founders, the VCs, the venues,
+            the back roads, and the best chai stalls near the venue. We know which hospitals you'd actually want to go
+            to and which cab services you'd actually want to use.</p>
+          <p class="about-p">Devcon India Experience is us making that knowledge available to anyone who wants it.</p>
+          <div class="team-cell">
+            <div class="team-name">Raj Rathaur</div>
+            <div class="team-role">// Founder, Morphine Labs</div>
+            <p class="team-p">Builder, ecosystem connector, and Mumbai local. Deep in the Indian Web3 scene. Been
+              attending and organizing around global crypto conferences for years. Built Devcon India Experience to make
+              Mumbai accessible to the global community coming for DEVCON VIII.</p>
+          </div>
+        </div>
+        <div>
+          <div class="devcon-block">
+            <div class="devcon-h">// WHAT IS DEVCON?</div>
+            <p class="devcon-p">Devcon is the annual developer conference organized by the Ethereum Foundation — the
+              most significant gathering in the global Web3 ecosystem. Unlike consumer-facing crypto events, Devcon is
+              where the builders are: core protocol researchers, application developers, infrastructure teams, and the
+              thinkers who shape what the internet becomes.</p>
+            <p class="devcon-p" style="margin-top:12px;">Previous editions have been held in Berlin, Amsterdam, Cancún,
+              Prague, Osaka, and Bogotá. Mumbai 2026 marks the first Devcon in India — a recognition of India's
+              growing centrality in the global Web3 movement.</p>
+          </div>
+          <div class="devcon-block" style="margin-top:12px;">
+            <div class="devcon-h">// INDIA'S WEB3 ECOSYSTEM</div>
+            <p class="devcon-p">India has the second-largest developer population in the world and one of the
+              fastest-growing crypto communities. Mumbai alone is home to dozens of serious Web3 companies, funds, and
+              communities. By the time Devcon arrives, the local ecosystem will be eager to connect with the global one
+              — and we're the bridge.</p>
+          </div>
+          <div class="devcon-block" style="margin-top:12px;">
+            <div class="devcon-h">// MORPHINE LABS</div>
+            <p class="devcon-p">Morphine Labs builds at the intersection of technology and real-world operations in
+              India. Devcon India Experience is our first consumer-facing product — born from a direct observation of a
+              gap nobody else was filling.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ CONTACT ═══════════════════════════════════ -->
+  <div class="page" id="page-contact">
+    <div class="contact-section">
+      <div class="section-tag">// BOOK YOUR EXPERIENCE</div>
+      <div class="section-h">Let's get you ready for Mumbai</div>
+      <div class="contact-grid">
+        <div>
+          <div class="contact-h">Get in touch</div>
+          <p class="contact-p">Fill out the form and we'll respond within 24 hours with package confirmation, payment
+            details, and next steps. Crypto and fiat both accepted.</p>
+          <ul class="contact-info">
+            <li><i class="ti ti-mail ci-icon"></i>
+              <div><span class="ci-label">// EMAIL</span><span class="ci-val">hello@onground.xyz</span></div>
+            </li>
+            <li><i class="ti ti-brand-telegram ci-icon"></i>
+              <div><span class="ci-label">// TELEGRAM</span><span class="ci-val">@ongroundxyz</span></div>
+            </li>
+            <li><i class="ti ti-brand-twitter ci-icon"></i>
+              <div><span class="ci-label">// X (TWITTER)</span><span class="ci-val">@ongroundxyz</span></div>
+            </li>
+            <li><i class="ti ti-map-pin ci-icon"></i>
+              <div><span class="ci-label">// BASED IN</span><span class="ci-val">India</span></div>
+            </li>
+            <li><i class="ti ti-currency-bitcoin ci-icon"></i>
+              <div><span class="ci-label">// CRYPTO PAYMENTS</span><span class="ci-val">BTC · ETH · USDC · SOL</span>
+              </div>
+            </li>
+          </ul>
+          <div class="info-block" style="margin-top:24px;">
+            <div class="info-tag">// RESPONSE TIME</div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.7;">We respond to all inquiries within 24 hours.
+              For urgent requests or last-minute bookings, Telegram is fastest.</p>
+          </div>
+        </div>
+        <form class="form-wrap" id="contact-form" onsubmit="handleForm(event)">
+          <div class="f-group"><label class="f-label">Full name</label><input class="f-in" type="text" id="fn"
+              placeholder="Your name" required></div>
+          <div class="f-group"><label class="f-label">Email</label><input class="f-in" type="email" id="fe"
+              placeholder="you@example.com" required></div>
+          <div class="f-group"><label class="f-label">Traveling from</label><input class="f-in" type="text" id="ff"
+              placeholder="City / Country"></div>
+          <div class="f-group"><label class="f-label">Package</label>
+            <select class="f-sel" id="fp">
+              <option value="">Select a tier</option>
+              <option>Essential — $400</option>
+              <option>Explorer — $800</option>
+              <option>Full Experience — $1,500</option>
+              <option>Custom / Group — let's talk</option>
+            </select>
+          </div>
+          <div class="f-group"><label class="f-label">Payment preference</label>
+            <select class="f-sel" id="fpay">
+              <option value="">Select payment method</option>
+              <option>ETH</option>
+              <option>USDC</option>
+              <option>BTC</option>
+              <option>SOL</option>
+              <option>USD (Bank / Card)</option>
+              <option>INR</option>
+            </select>
+          </div>
+          <div class="f-group"><label class="f-label">Arrival date & flight (optional)</label><input class="f-in"
+              type="text" id="fd" placeholder="e.g. Nov 1, EK502 arriving 23:40"></div>
+          <div class="f-group"><label class="f-label">Anything else we should know?</label><textarea class="f-ta"
+              id="fc"
+              placeholder="Special requirements, partner/family joining, health needs, group size..."></textarea></div>
+          <button class="f-sub" id="submit-button" type="submit">// CONFIRM BOOKING REQUEST</button>
+          <div class="f-note">&gt; We'll confirm within 24 hours with payment details and next steps.</div>
+          <div class="success-msg" id="success-msg">&gt; REQUEST RECEIVED. Expect a reply within 24 hours. — ONGROUND by
+            Morphine
+            Labs <span class="cursor"></span></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-l">ONBOARD.XYZ · MORPHINE LABS · MUMBAI · 2026</div>
+    <div class="footer-links">
+      <span class="footer-link" onclick="showPage('home')">Home</span>
+      <span class="footer-link" onclick="showPackages()">Packages</span>
+      <span class="footer-link" onclick="showPage('mumbai')">Mumbai Guide</span>
+      <span class="footer-link" onclick="showPage('about')">About</span>
+      <span class="footer-link" onclick="showPage('contact')">Contact</span>
+      <a class="footer-link" href="https://x.com/ongroundxyz" target="_blank" rel="noopener"><i
+          class="ti ti-brand-x"></i> Twitter</a>
+      <a class="footer-link" href="https://www.instagram.com/ongroundxyz" target="_blank" rel="noopener"><i
+          class="ti ti-brand-instagram"></i> Instagram</a>
+    </div>
+    <div class="footer-r">BTC · ETH · USDC · SOL ACCEPTED</div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <script>
+    const emailJsConfig = {
+      publicKey: 'jADIBaSWbZtR2zj0F',
+      serviceId: 'service_jm86qa3',
+      templateId: 'template_4d2xsu9'
+    };
+
+    if (window.emailjs) {
+      emailjs.init(emailJsConfig.publicKey);
+    }
+
+    function setActiveNav(id) {
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      const link = document.querySelector('[data-page="' + id + '"]');
+      if (link) link.classList.add('active');
+    }
+
+    function toggleMenu() {
+      const navLinks = document.getElementById('nav-links');
+      const menuIcon = document.querySelector('.menu-toggle i');
+      navLinks.classList.toggle('open');
+      if (navLinks.classList.contains('open')) {
+        menuIcon.className = 'ti ti-x';
+      } else {
+        menuIcon.className = 'ti ti-menu';
+      }
+    }
+
+    function showPage(id) {
+      const navLinks = document.getElementById('nav-links');
+      const menuIcon = document.querySelector('.menu-toggle i');
+      if (navLinks && navLinks.classList.contains('open')) {
+        navLinks.classList.remove('open');
+        if (menuIcon) menuIcon.className = 'ti ti-menu';
+      }
+
+      if (id === 'packages') {
+        showPackages();
+        return;
+      }
+
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + id).classList.add('active');
+      setActiveNav(id);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showPackages() {
+      const navLinks = document.getElementById('nav-links');
+      const menuIcon = document.querySelector('.menu-toggle i');
+      if (navLinks && navLinks.classList.contains('open')) {
+        navLinks.classList.remove('open');
+        if (menuIcon) menuIcon.className = 'ti ti-menu';
+      }
+
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-home').classList.add('active');
+      setActiveNav('packages');
+      const section = document.getElementById('packages-section');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function toggleThemeDisabled() {
+      const html = document.documentElement;
+      const icon = document.getElementById('themeIcon');
+      if (html.getAttribute('data-theme') === 'light') {
+        html.setAttribute('data-theme', 'light');
+        icon.className = 'ti ti-moon';
+      } else {
+        html.setAttribute('data-theme', 'light');
+        icon.className = 'ti ti-sun';
+      }
+    }
+
+    function buildMailtoUrl(formData) {
+      let emailBody = 'Devcon India Experience Booking Request\n';
+      emailBody += '=======================================\n\n';
+      emailBody += `Full Name: ${formData.name}\n`;
+      emailBody += `Email: ${formData.email}\n`;
+      if (formData.company) emailBody += `Traveling From: ${formData.company}\n`;
+      if (formData.packageType) emailBody += `Selected Package: ${formData.packageType}\n`;
+      if (formData.paymentType) emailBody += `Payment Preference: ${formData.paymentType}\n`;
+      if (formData.arrivalDate) emailBody += `Arrival & Flight Info: ${formData.arrivalDate}\n`;
+      if (formData.message) emailBody += `Additional Details: ${formData.message}\n`;
+
+      const subject = `Booking Request - ${formData.name}`;
+      return `mailto:admin@morphinelabs.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+    }
+
+    async function handleForm(event) {
+      event.preventDefault();
+
+      const form = document.getElementById('contact-form');
+      const successMessage = document.getElementById('success-msg');
+      const submitButton = document.getElementById('submit-button');
+      const formData = {
+        name: document.getElementById('fn').value.trim(),
+        email: document.getElementById('fe').value.trim(),
+        company: document.getElementById('ff').value.trim(),
+        packageType: document.getElementById('fp').value,
+        paymentType: document.getElementById('fpay').value,
+        arrivalDate: document.getElementById('fd').value.trim(),
+        message: document.getElementById('fc').value.trim()
+      };
+
+      if (!formData.name || !formData.email) {
+        alert('Name and email are required.');
+        return;
+      }
+
+      successMessage.style.display = 'none';
+      submitButton.disabled = true;
+      submitButton.style.opacity = '0.6';
+
+      try {
+        if (!window.emailjs) {
+          throw new Error('EmailJS failed to load.');
+        }
+
+        await emailjs.send(
+          emailJsConfig.serviceId,
+          emailJsConfig.templateId,
+          formData
+        );
+
+        successMessage.style.display = 'block';
+        form.reset();
+      } catch (error) {
+        console.error('Contact form submission failed:', error);
+        alert('Automatic sending failed, so your email app will open instead.');
+        window.location.href = buildMailtoUrl(formData);
+      } finally {
+        submitButton.disabled = false;
+        submitButton.style.opacity = '1';
+      }
+    }
+
+    let slideIndex = 1;
+    let slideTimer;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      showSlides(slideIndex);
+      slideTimer = setInterval(() => plusSlides(1), 5000); // Change image every 5 seconds
+    });
+
+    function plusSlides(n) {
+      clearInterval(slideTimer);
+      showSlides(slideIndex += n);
+      slideTimer = setInterval(() => plusSlides(1), 5000);
+    }
+
+    function currentSlide(n) {
+      clearInterval(slideTimer);
+      showSlides(slideIndex = n);
+      slideTimer = setInterval(() => plusSlides(1), 5000);
+    }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("slide");
+      let dots = document.getElementsByClassName("slideshow-dot");
+      if (slides.length === 0) return;
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
+  </script>
+</body>
+
+</html>
