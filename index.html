@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
   <meta charset="UTF-8">
@@ -17,7 +17,29 @@
       padding: 0;
     }
 
-    :root {
+    /* DARK THEME (default) */
+    :root,
+    [data-theme="light"] {
+      --bg: #080808;
+      --bg2: #0f0f0f;
+      --bg3: #141414;
+      --border: #1e1e1e;
+      --border2: #2a2a2a;
+      --text: #e8e4d9;
+      --muted: #666;
+      --dim: #333;
+      --orange: #E97B2E;
+      --orange-dim: #1a0d00;
+      --green: #4ade80;
+      --skyline-fill: #0f0f0f;
+      --skyline-stroke: #2a2a2a;
+      --skyline-glow: rgba(233, 123, 46, 0.08);
+      --mono: 'Share Tech Mono', monospace;
+      --sans: 'Space Grotesk', sans-serif;
+    }
+
+    /* LIGHT THEME */
+    [data-theme="light"] {
       --bg: #f5f0e8;
       --bg2: #ede8de;
       --bg3: #e5dfd3;
@@ -128,7 +150,26 @@
       opacity: 0.88;
     }
 
+    /* THEME TOGGLE */
+    .theme-toggle {
+      height: 52px;
+      border-left: 1px solid var(--border);
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      background: none;
+      border-top: none;
+      border-right: none;
+      border-bottom: none;
+      color: var(--muted);
+      font-size: 15px;
+      transition: color 0.15s;
+    }
 
+    .theme-toggle:hover {
+      color: var(--orange);
+    }
 
     /* TICKER */
     .ticker {
@@ -985,6 +1026,20 @@
       letter-spacing: 0.1em;
     }
 
+    .nav-logo a:hover {
+      color: var(--text) !important;
+    }
+
+    .footer-l a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-l a:hover {
+      color: var(--orange);
+    }
+
     .footer-r {
       font-family: var(--mono);
       font-size: 9px;
@@ -1275,7 +1330,7 @@
         right: -280px;
         width: 280px;
         height: calc(100vh - 52px);
-        background: rgba(237, 232, 222, 0.98);
+        background: rgba(15, 15, 15, 0.95);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         border-left: 1px solid var(--border);
@@ -1284,6 +1339,10 @@
         gap: 0;
         transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 99;
+      }
+
+      [data-theme="light"] .nav-links {
+        background: rgba(237, 232, 222, 0.98);
       }
 
       .nav-links.open {
@@ -1452,8 +1511,9 @@
 
   <nav>
     <div class="nav-logo">
-      <span onclick="showPage('home')">ONGROUND.XYZ</span> // <a href="https://www.morphinelabs.xyz/" target="_blank"
-        rel="noopener" style="color: inherit; text-decoration: none;">MORPHINE LABS</a>
+      <span onclick="showPage('home')" style="cursor: pointer;">ONGROUND.XYZ</span> // <a
+        href="https://www.morphinelabs.xyz/" target="_blank" rel="noopener"
+        style="color: inherit; text-decoration: none; cursor: pointer;">MORPHINE LABS</a>
     </div>
     <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Navigation">
       <i class="ti ti-menu"></i>
@@ -1988,12 +2048,12 @@
     <div class="pkg-hero" id="packages-section">
       <div class="section-tag">// PACKAGES</div>
       <div class="section-h">Choose your experience tier</div>
-      <p class="section-sub">All packages are priced per person. Crypto and fiat accepted.</p>
+      <p class="section-sub">Crypto and fiat accepted.</p>
       <div class="pkg-grid">
         <div class="pkg">
           <div class="pkg-n">01 // ESSENTIAL</div>
           <div class="pkg-name">Essential</div>
-          <div class="pkg-price"><sup>$</sup>400<sub> / person</sub></div>
+
           <div class="pkg-tag">The basics covered. Land informed, move confidently through Devcon week.</div>
           <ul class="pkg-list">
             <li><span class="pk">+</span> Pre-arrival info pack (visa, SIM, currency, packing)</li>
@@ -2013,7 +2073,7 @@
           <div class="rec">MOST POPULAR</div>
           <div class="pkg-n">02 // EXPLORER</div>
           <div class="pkg-name">Explorer</div>
-          <div class="pkg-price"><sup>$</sup>800<sub> / person</sub></div>
+
           <div class="pkg-tag">Everything in Essential, plus Mumbai beyond the conference — city, culture, and real
             connections.</div>
           <ul class="pkg-list">
@@ -2035,7 +2095,7 @@
         <div class="pkg">
           <div class="pkg-n">03 // FULL EXPERIENCE</div>
           <div class="pkg-name">Full Experience</div>
-          <div class="pkg-price"><sup>$</sup>1,500<sub> / person</sub></div>
+
           <div class="pkg-tag">For founders and executives who need zero friction. Everything handled, all week.</div>
           <ul class="pkg-list">
             <li><span class="pk">+</span> Everything in Explorer</li>
@@ -2056,7 +2116,7 @@
       </div>
     </div>
 
-    <div class="slideshow-section">
+    <!-- <div class="slideshow-section">
       <div class="section-tag">// PAST EVENTS</div>
       <div class="section-h">Glimpses of our previous experiences</div>
       <p class="section-sub">Take a look at the developer panels, active hackathons, and networking sessions from our
@@ -2077,72 +2137,72 @@
         </div>
 
         <!-- Next & Previous buttons -->
-        <a class="slideshow-prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="slideshow-next" onclick="plusSlides(1)">&#10095;</a>
-      </div>
+    <a class="slideshow-prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="slideshow-next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
 
-      <div class="dot-container">
-        <span class="slideshow-dot" onclick="currentSlide(1)"></span>
-        <span class="slideshow-dot" onclick="currentSlide(2)"></span>
-        <span class="slideshow-dot" onclick="currentSlide(3)"></span>
+  <div class="dot-container">
+    <span class="slideshow-dot" onclick="currentSlide(1)"></span>
+    <span class="slideshow-dot" onclick="currentSlide(2)"></span>
+    <span class="slideshow-dot" onclick="currentSlide(3)"></span>
+  </div>
+  </div>
+
+  <div class="section">
+    <div class="section-tag">// CRYPTO PAYMENTS</div>
+    <div class="section-h">We're a Web3 team.<br>We accept Web3 payments.</div>
+    <p class="section-sub">Pay in crypto, fiat, or a combination. All payments confirmed on-chain. Invoices available
+      for any currency.</p>
+    <div class="crypto-grid">
+      <div style="background:var(--bg2);padding:20px;text-align:center;"><span
+          style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">BTC</span><span
+          style="font-family:var(--mono);font-size:9px;color:var(--dim);">Bitcoin</span></div>
+      <div style="background:var(--bg2);padding:20px;text-align:center;"><span
+          style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">ETH</span><span
+          style="font-family:var(--mono);font-size:9px;color:var(--dim);">Ethereum</span></div>
+      <div style="background:var(--bg2);padding:20px;text-align:center;"><span
+          style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">USDC</span><span
+          style="font-family:var(--mono);font-size:9px;color:var(--dim);">USD Coin</span></div>
+      <div style="background:var(--bg2);padding:20px;text-align:center;"><span
+          style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">SOL</span><span
+          style="font-family:var(--mono);font-size:9px;color:var(--dim);">Solana</span></div>
+      <div style="background:var(--bg2);padding:20px;text-align:center;"><span
+          style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">INR/USD</span><span
+          style="font-family:var(--mono);font-size:9px;color:var(--dim);">Fiat</span></div>
+    </div>
+    <div style="margin-top:12px;font-family:var(--mono);font-size:10px;color:var(--dim);">&gt; 50% deposit to confirm.
+      Balance due on arrival. Wallet address shared on booking confirmation.</div>
+  </div>
+
+  <div class="section" style="background:var(--bg2);">
+    <div class="section-tag">// FAQ</div>
+    <div class="section-h">Common questions</div>
+    <div style="margin-top:32px;border:1px solid var(--border);">
+      <div style="padding:20px 24px;border-bottom:1px solid var(--border);">
+        <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">Can I book for a group?</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.7;">Yes. Group rates available for 3+ people
+          traveling together. Contact us for custom pricing.</div>
+      </div>
+      <div style="padding:20px 24px;border-bottom:1px solid var(--border);">
+        <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">What if I only need specific
+          services?</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.7;">Reach out and we can discuss à la carte
+          options. Packages are designed for best value, but we're flexible.</div>
+      </div>
+      <div style="padding:20px 24px;border-bottom:1px solid var(--border);">
+        <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">I'm staying longer than
+          Devcon week. Can coverage extend?</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.7;">Yes. Extensions for Diwali week, Goa, or other
+          India travel can be arranged at a daily rate.</div>
+      </div>
+      <div style="padding:20px 24px;">
+        <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">Is this available for people
+          traveling with partners or family?</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.7;">Absolutely. We can arrange non-conference
+          activities for partners and family during conference hours.</div>
       </div>
     </div>
-
-    <div class="section">
-      <div class="section-tag">// CRYPTO PAYMENTS</div>
-      <div class="section-h">We're a Web3 team.<br>We accept Web3 payments.</div>
-      <p class="section-sub">Pay in crypto, fiat, or a combination. All payments confirmed on-chain. Invoices available
-        for any currency.</p>
-      <div class="crypto-grid">
-        <div style="background:var(--bg2);padding:20px;text-align:center;"><span
-            style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">BTC</span><span
-            style="font-family:var(--mono);font-size:9px;color:var(--dim);">Bitcoin</span></div>
-        <div style="background:var(--bg2);padding:20px;text-align:center;"><span
-            style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">ETH</span><span
-            style="font-family:var(--mono);font-size:9px;color:var(--dim);">Ethereum</span></div>
-        <div style="background:var(--bg2);padding:20px;text-align:center;"><span
-            style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">USDC</span><span
-            style="font-family:var(--mono);font-size:9px;color:var(--dim);">USD Coin</span></div>
-        <div style="background:var(--bg2);padding:20px;text-align:center;"><span
-            style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">SOL</span><span
-            style="font-family:var(--mono);font-size:9px;color:var(--dim);">Solana</span></div>
-        <div style="background:var(--bg2);padding:20px;text-align:center;"><span
-            style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">INR/USD</span><span
-            style="font-family:var(--mono);font-size:9px;color:var(--dim);">Fiat</span></div>
-      </div>
-      <div style="margin-top:12px;font-family:var(--mono);font-size:10px;color:var(--dim);">&gt; 50% deposit to confirm.
-        Balance due on arrival. Wallet address shared on booking confirmation.</div>
-    </div>
-
-    <div class="section" style="background:var(--bg2);">
-      <div class="section-tag">// FAQ</div>
-      <div class="section-h">Common questions</div>
-      <div style="margin-top:32px;border:1px solid var(--border);">
-        <div style="padding:20px 24px;border-bottom:1px solid var(--border);">
-          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">Can I book for a group?</div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.7;">Yes. Group rates available for 3+ people
-            traveling together. Contact us for custom pricing.</div>
-        </div>
-        <div style="padding:20px 24px;border-bottom:1px solid var(--border);">
-          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">What if I only need specific
-            services?</div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.7;">Reach out and we can discuss à la carte
-            options. Packages are designed for best value, but we're flexible.</div>
-        </div>
-        <div style="padding:20px 24px;border-bottom:1px solid var(--border);">
-          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">I'm staying longer than
-            Devcon week. Can coverage extend?</div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.7;">Yes. Extensions for Diwali week, Goa, or other
-            India travel can be arranged at a daily rate.</div>
-        </div>
-        <div style="padding:20px 24px;">
-          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">Is this available for people
-            traveling with partners or family?</div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.7;">Absolutely. We can arrange non-conference
-            activities for partners and family during conference hours.</div>
-        </div>
-      </div>
-    </div>
+  </div>
   </div>
 
   <!-- ═══════════════════════════════════ MUMBAI GUIDE ═══════════════════════════════════ -->
@@ -2386,23 +2446,26 @@
     <div class="about-hero">
       <div class="section-tag">// ABOUT</div>
       <div class="section-h">Who we are</div>
-      <p class="section-sub">Morphine Labs is a Mumbai-based team at the intersection of Web3 and real-world operations.
-        We built Devcon India Experience to solve a problem we understood intimately.</p>
+      <p class="section-sub"><a href="https://www.morphinelabs.xyz/" target="_blank" rel="noopener"
+          style="color: inherit; text-decoration: underline; transition: color 0.15s;"
+          onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='inherit'">Morphine Labs</a> is a
+        India-based team at the intersection of Web3 and real-world operations.
+        We built OnGround to solve a problem we understood intimately.</p>
       <div class="about-grid">
         <div>
           <div class="about-h">Why we built this</div>
           <p class="about-p">When DEVCON VIII was announced for Mumbai, we saw a clear gap. Thousands of international
             attendees would be coming to India — many for the first time — with no local infrastructure to help them
             navigate the city, the culture, or the conference week effectively.</p>
-          <p class="about-p">We've spent years in Mumbai's Web3 ecosystem. We know the founders, the VCs, the venues,
+          <p class="about-p">We've spent years in India's Web3 ecosystem. We know the founders, the VCs, the venues,
             the back roads, and the best chai stalls near the venue. We know which hospitals you'd actually want to go
             to and which cab services you'd actually want to use.</p>
-          <p class="about-p">Devcon India Experience is us making that knowledge available to anyone who wants it.</p>
+          <p class="about-p">OnGround is us making that knowledge available to anyone who wants it.</p>
           <div class="team-cell">
             <div class="team-name">Raj Rathaur</div>
             <div class="team-role">// Founder, Morphine Labs</div>
-            <p class="team-p">Builder, ecosystem connector, and Mumbai local. Deep in the Indian Web3 scene. Been
-              attending and organizing around global crypto conferences for years. Built Devcon India Experience to make
+            <p class="team-p">Builder and ecosystem connector. Deep in the Indian Web3 scene. Been
+              attending and organizing around global crypto conferences for years. Built OnGround to make
               Mumbai accessible to the global community coming for DEVCON VIII.</p>
           </div>
         </div>
@@ -2425,9 +2488,12 @@
               — and we're the bridge.</p>
           </div>
           <div class="devcon-block" style="margin-top:12px;">
-            <div class="devcon-h">// MORPHINE LABS</div>
+            <div class="devcon-h">// <a href="https://www.morphinelabs.xyz/" target="_blank" rel="noopener"
+                style="color: inherit; text-decoration: none; transition: color 0.15s;"
+                onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='inherit'">MORPHINE LABS</a>
+            </div>
             <p class="devcon-p">Morphine Labs builds at the intersection of technology and real-world operations in
-              India. Devcon India Experience is our first consumer-facing product — born from a direct observation of a
+              India. OnGround is our first consumer-facing product — born from a direct observation of a
               gap nobody else was filling.</p>
           </div>
         </div>
@@ -2447,11 +2513,13 @@
             details, and next steps. Crypto and fiat both accepted.</p>
           <ul class="contact-info">
             <li><i class="ti ti-mail ci-icon"></i>
-              <div><span class="ci-label">// EMAIL</span><span class="ci-val">hello@onground.xyz</span></div>
+              <div><span class="ci-label">// EMAIL</span><a href="mailto:admin@morphinelabs.com"
+                  class="ci-val">admin@morphinelabs.com</a></div>
             </li>
             <li><i class="ti ti-brand-telegram ci-icon"></i>
-              <div><span class="ci-label">// TELEGRAM</span><a href="https://t.me/ongroundxyz" target="_blank"
-                  rel="noopener" class="ci-val">@ongroundxyz</a></div>
+              <div><span class="ci-label">// TELEGRAM</span><a href="https://t.me/morphinelabs" target="_blank"
+                  rel="noopener" class="ci-val">@morphinelabs</a> <span style="color: var(--muted);">and</span> <a
+                  href="https://t.me/raj_cc" target="_blank" rel="noopener" class="ci-val">@raj.cc</a></div>
             </li>
             <li><i class="ti ti-brand-twitter ci-icon"></i>
               <div><span class="ci-label">// X (TWITTER)</span><a href="https://x.com/ongroundxyz" target="_blank"
@@ -2478,26 +2546,10 @@
               placeholder="you@example.com" required></div>
           <div class="f-group"><label class="f-label">Traveling from</label><input class="f-in" type="text" id="ff"
               placeholder="City / Country"></div>
-          <div class="f-group"><label class="f-label">Package</label>
-            <select class="f-sel" id="fp">
-              <option value="">Select a tier</option>
-              <option>Essential — $400</option>
-              <option>Explorer — $800</option>
-              <option>Full Experience — $1,500</option>
-              <option>Custom / Group — let's talk</option>
-            </select>
-          </div>
-          <div class="f-group"><label class="f-label">Payment preference</label>
-            <select class="f-sel" id="fpay">
-              <option value="">Select payment method</option>
-              <option>ETH</option>
-              <option>USDC</option>
-              <option>BTC</option>
-              <option>SOL</option>
-              <option>USD (Bank / Card)</option>
-              <option>INR</option>
-            </select>
-          </div>
+          <div class="f-group"><label class="f-label">Twitter username</label><input class="f-in" type="text" id="ftw"
+              placeholder="@username" pattern="^@.+" title="Username must start with @" required></div>
+          <div class="f-group"><label class="f-label">Telegram username</label><input class="f-in" type="text" id="ftg"
+              placeholder="@username" pattern="^@.+" title="Username must start with @" required></div>
           <div class="f-group"><label class="f-label">Arrival date & flight (optional)</label><input class="f-in"
               type="text" id="fd" placeholder="e.g. Nov 1, EK502 arriving 23:40"></div>
           <div class="f-group"><label class="f-label">Anything else we should know?</label><textarea class="f-ta"
@@ -2514,7 +2566,8 @@
   </div>
 
   <footer>
-    <div class="footer-l">ONBOARD.XYZ · MORPHINE LABS · MUMBAI · 2026</div>
+    <div class="footer-l">ONBOARD.XYZ · <a href="https://www.morphinelabs.xyz/" target="_blank" rel="noopener">MORPHINE
+        LABS</a> · MUMBAI · 2026</div>
     <div class="footer-links">
       <span class="footer-link" onclick="showPage('home')">Home</span>
       <span class="footer-link" onclick="showPackages()">Packages</span>
@@ -2531,7 +2584,9 @@
     <div class="footer-ph">
       <a href="https://www.producthunt.com/products/onground?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-onground"
         target="_blank" rel="noopener noreferrer">
-        <img src="product-hunt.png" alt="Product Hunt" width="38" height="38">
+        <img
+          src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1186686&amp;theme=dark&amp;t=1783542527489"
+          alt="Onground - On the ground, so you don't have to figure it out. | Product Hunt" width="250" height="54">
       </a>
     </div>
 
@@ -2541,15 +2596,13 @@
 
   <script>
     const emailJsConfig = {
-      publicKey: 'Zty3jR6YueToIaS1a',
-      serviceId: 'service_v7pxjxs',
-      templateId: 'template_xl00u1v'
+      publicKey: 'jADIBaSWbZtR2zj0F',
+      serviceId: 'service_jm86qa3',
+      templateId: 'template_4d2xsu9'
     };
 
     if (window.emailjs) {
-      emailjs.init({
-        publicKey: emailJsConfig.publicKey
-      });
+      emailjs.init(emailJsConfig.publicKey);
     }
 
     function setActiveNav(id) {
@@ -2605,7 +2658,17 @@
       }
     }
 
-
+    function toggleThemeDisabled() {
+      const html = document.documentElement;
+      const icon = document.getElementById('themeIcon');
+      if (html.getAttribute('data-theme') === 'light') {
+        html.setAttribute('data-theme', 'light');
+        icon.className = 'ti ti-moon';
+      } else {
+        html.setAttribute('data-theme', 'light');
+        icon.className = 'ti ti-sun';
+      }
+    }
 
     function buildMailtoUrl(formData) {
       let emailBody = 'Devcon India Experience Booking Request\n';
@@ -2613,8 +2676,8 @@
       emailBody += `Full Name: ${formData.name}\n`;
       emailBody += `Email: ${formData.email}\n`;
       if (formData.company) emailBody += `Traveling From: ${formData.company}\n`;
-      if (formData.packageType) emailBody += `Selected Package: ${formData.packageType}\n`;
-      if (formData.paymentType) emailBody += `Payment Preference: ${formData.paymentType}\n`;
+      emailBody += `Twitter: ${formData.twitter}\n`;
+      emailBody += `Telegram: ${formData.telegram}\n`;
       if (formData.arrivalDate) emailBody += `Arrival & Flight Info: ${formData.arrivalDate}\n`;
       if (formData.message) emailBody += `Additional Details: ${formData.message}\n`;
 
@@ -2632,14 +2695,19 @@
         name: document.getElementById('fn').value.trim(),
         email: document.getElementById('fe').value.trim(),
         company: document.getElementById('ff').value.trim(),
-        packageType: document.getElementById('fp').value,
-        paymentType: document.getElementById('fpay').value,
+        twitter: document.getElementById('ftw').value.trim(),
+        telegram: document.getElementById('ftg').value.trim(),
         arrivalDate: document.getElementById('fd').value.trim(),
         message: document.getElementById('fc').value.trim()
       };
 
       if (!formData.name || !formData.email) {
         alert('Name and email are required.');
+        return;
+      }
+
+      if (!formData.twitter.startsWith('@') || !formData.telegram.startsWith('@')) {
+        alert('Twitter and Telegram usernames must start with @');
         return;
       }
 
@@ -2662,8 +2730,7 @@
         form.reset();
       } catch (error) {
         console.error('Contact form submission failed:', error);
-        const errMsg = error && (error.text || error.message || JSON.stringify(error));
-        alert('Automatic sending failed: ' + errMsg + '\n\nOpening your email app instead.');
+        alert('Automatic sending failed, so your email app will open instead.');
         window.location.href = buildMailtoUrl(formData);
       } finally {
         submitButton.disabled = false;
