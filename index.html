@@ -554,6 +554,95 @@
       line-height: 1.6;
     }
 
+    /* SERVICES GRID */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 32px;
+    }
+
+    .service-card {
+      background: var(--bg);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      transition: background-color 0.25s ease;
+    }
+
+    .service-card:hover {
+      background: var(--bg2);
+    }
+
+    .service-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .service-icon {
+      font-size: 24px;
+      color: var(--orange);
+      transition: transform 0.25s ease;
+    }
+
+    .service-card:hover .service-icon {
+      transform: scale(1.1);
+    }
+
+    .service-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--dim);
+      letter-spacing: 0.1em;
+    }
+
+    .service-t {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .service-p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* SERVICES BOTTOM CTA */
+    .services-cta-box {
+      margin-top: 40px;
+      border: 1px solid var(--border);
+      padding: 32px;
+      background: var(--bg2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .services-cta-content {
+      max-width: 680px;
+    }
+
+    .services-cta-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .services-cta-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
     /* PACKAGES */
     .pkg-hero {
       padding: 64px 32px;
@@ -1316,6 +1405,10 @@
       .bento {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     /* TABLET PORTRAIT / MOBILE NAVIGATION BREAKPOINT (max-width: 900px) { */
@@ -1411,6 +1504,13 @@
       .stat-cell:nth-child(3) {
         border-right: 1px solid var(--border);
       }
+
+      .services-cta-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 24px;
+      }
     }
 
     /* SMARTPHONES (max-width: 600px) */
@@ -1436,7 +1536,8 @@
 
       /* Stack bento & guide */
       .bento,
-      .guide-grid {
+      .guide-grid,
+      .services-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1520,6 +1621,7 @@
     </button>
     <div class="nav-links" id="nav-links">
       <span class="nav-link active" data-page="home" onclick="showPage('home')">Home</span>
+      <span class="nav-link" data-page="services" onclick="showServices()">What We Do</span>
       <span class="nav-link" data-page="packages" onclick="showPackages()">Packages</span>
       <span class="nav-link" data-page="mumbai" onclick="showPage('mumbai')">Mumbai Guide</span>
       <span class="nav-link" data-page="about" onclick="showPage('about')">About</span>
@@ -1970,6 +2072,113 @@
       <div class="stat-cell"><span class="stat-n">∞</span><span class="stat-l">Local connections</span></div>
     </div>
 
+    <!-- WHAT WE EXACTLY DO -->
+    <div class="section" id="what-we-do">
+      <div class="section-tag">// OUR SERVICES</div>
+      <h2 class="section-h">Everything you need in Mumbai during Devcon.</h2>
+      <p class="section-sub">From the moment you land until you fly back, we handle the logistics so you can focus on
+        networking, building and enjoying Devcon.</p>
+
+      <div class="services-grid">
+        <!-- 01 -->
+        <div class="service-card">
+          <div class="service-card-header">
+            <span class="service-icon"><i class="ti ti-plane-arrival"></i></span>
+            <span class="service-num">01</span>
+          </div>
+          <h3 class="service-t">Airport Pickup & Drop</h3>
+          <p class="service-p">Private airport pickups, hotel transfers and return rides with verified local drivers. No
+            bargaining, no confusion, no waiting.</p>
+        </div>
+
+        <!-- 02 -->
+        <div class="service-card">
+          <div class="service-card-header">
+            <span class="service-icon"><i class="ti ti-building-community"></i></span>
+            <span class="service-num">02</span>
+          </div>
+          <h3 class="service-t">Accommodation Assistance</h3>
+          <p class="service-p">We help you find trusted hotels, apartments and Airbnb options close to Devcon venues
+            that match your budget.</p>
+        </div>
+
+        <!-- 03 -->
+        <div class="service-card">
+          <div class="service-card-header">
+            <span class="service-icon"><i class="ti ti-car"></i></span>
+            <span class="service-num">03</span>
+          </div>
+          <h3 class="service-t">Local Transportation</h3>
+          <p class="service-p">Book cabs, day drivers, bike rentals or group transportation for conferences, side events
+            and city exploration.</p>
+        </div>
+
+        <!-- 04 -->
+        <div class="service-card">
+          <div class="service-card-header">
+            <span class="service-icon"><i class="ti ti-calendar-event"></i></span>
+            <span class="service-num">04</span>
+          </div>
+          <h3 class="service-t">Devcon & Side Event Support</h3>
+          <p class="service-p">Need to reach multiple side events? We plan routes, transportation and schedules so you
+            never miss important networking opportunities.</p>
+        </div>
+
+        <!-- 05 -->
+        <div class="service-card">
+          <div class="service-card-header">
+            <span class="service-icon"><i class="ti ti-headset"></i></span>
+            <span class="service-num">05</span>
+          </div>
+          <h3 class="service-t">24/7 On-Ground Assistance</h3>
+          <p class="service-p">Lost your wallet? Flight delayed? Need help late at night? Our local team is available
+            throughout your stay.</p>
+        </div>
+
+        <!-- 06 -->
+        <div class="service-card">
+          <div class="service-card-header">
+            <span class="service-icon"><i class="ti ti-map-pin"></i></span>
+            <span class="service-num">06</span>
+          </div>
+          <h3 class="service-t">Local Recommendations</h3>
+          <p class="service-p">Discover the best restaurants, cafés, coworking spaces, nightlife, crypto meetups and
+            hidden gems recommended by locals.</p>
+        </div>
+
+        <!-- 07 -->
+        <div class="service-card">
+          <div class="service-card-header">
+            <span class="service-icon"><i class="ti ti-currency-bitcoin"></i></span>
+            <span class="service-num">07</span>
+          </div>
+          <h3 class="service-t">Crypto Friendly Payments</h3>
+          <p class="service-p">Pay using BTC, ETH, USDC, SOL or traditional payment methods wherever applicable.</p>
+        </div>
+
+        <!-- 08 -->
+        <div class="service-card">
+          <div class="service-card-header">
+            <span class="service-icon"><i class="ti ti-stars"></i></span>
+            <span class="service-num">08</span>
+          </div>
+          <h3 class="service-t">Concierge Service</h3>
+          <p class="service-p">Need SIM cards, currency exchange, shopping, festival planning or anything else? Just
+            message us—we'll take care of it.</p>
+        </div>
+      </div>
+
+      <!-- Bottom CTA Box -->
+      <div class="services-cta-box">
+        <div class="services-cta-content">
+          <h4 class="services-cta-title">One contact. Every travel problem solved.</h4>
+          <p class="services-cta-desc">Whether you're staying for Devcon, India Blockchain Week, side events or Diwali,
+            we're your local team in Mumbai.</p>
+        </div>
+        <button class="btn-p" onclick="showBookForm()">Book Your Experience →</button>
+      </div>
+    </div>
+
     <div class="section" id="mumbai-incredible">
       <div class="section-tag">// WHY THIS EXISTS</div>
       <div class="section-h">Mumbai is incredible.<br>It can also break you.</div>
@@ -2117,61 +2326,61 @@
     </div>
 
 
-  <div class="section">
-    <div class="section-tag">// CRYPTO PAYMENTS</div>
-    <div class="section-h">We're a Web3 team.<br>We accept Web3 payments.</div>
-    <p class="section-sub">Pay in crypto, fiat, or a combination. All payments confirmed on-chain. Invoices available
-      for any currency.</p>
-    <div class="crypto-grid">
-      <div style="background:var(--bg2);padding:20px;text-align:center;"><span
-          style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">BTC</span><span
-          style="font-family:var(--mono);font-size:9px;color:var(--dim);">Bitcoin</span></div>
-      <div style="background:var(--bg2);padding:20px;text-align:center;"><span
-          style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">ETH</span><span
-          style="font-family:var(--mono);font-size:9px;color:var(--dim);">Ethereum</span></div>
-      <div style="background:var(--bg2);padding:20px;text-align:center;"><span
-          style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">USDC</span><span
-          style="font-family:var(--mono);font-size:9px;color:var(--dim);">USD Coin</span></div>
-      <div style="background:var(--bg2);padding:20px;text-align:center;"><span
-          style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">SOL</span><span
-          style="font-family:var(--mono);font-size:9px;color:var(--dim);">Solana</span></div>
-      <div style="background:var(--bg2);padding:20px;text-align:center;"><span
-          style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">INR/USD</span><span
-          style="font-family:var(--mono);font-size:9px;color:var(--dim);">Fiat</span></div>
+    <div class="section">
+      <div class="section-tag">// CRYPTO PAYMENTS</div>
+      <div class="section-h">We're a Web3 team.<br>We accept Web3 payments.</div>
+      <p class="section-sub">Pay in crypto, fiat, or a combination. All payments confirmed on-chain. Invoices available
+        for any currency.</p>
+      <div class="crypto-grid">
+        <div style="background:var(--bg2);padding:20px;text-align:center;"><span
+            style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">BTC</span><span
+            style="font-family:var(--mono);font-size:9px;color:var(--dim);">Bitcoin</span></div>
+        <div style="background:var(--bg2);padding:20px;text-align:center;"><span
+            style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">ETH</span><span
+            style="font-family:var(--mono);font-size:9px;color:var(--dim);">Ethereum</span></div>
+        <div style="background:var(--bg2);padding:20px;text-align:center;"><span
+            style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">USDC</span><span
+            style="font-family:var(--mono);font-size:9px;color:var(--dim);">USD Coin</span></div>
+        <div style="background:var(--bg2);padding:20px;text-align:center;"><span
+            style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">SOL</span><span
+            style="font-family:var(--mono);font-size:9px;color:var(--dim);">Solana</span></div>
+        <div style="background:var(--bg2);padding:20px;text-align:center;"><span
+            style="font-family:var(--mono);font-size:18px;color:var(--orange);display:block;margin-bottom:6px;">INR/USD</span><span
+            style="font-family:var(--mono);font-size:9px;color:var(--dim);">Fiat</span></div>
+      </div>
+      <div style="margin-top:12px;font-family:var(--mono);font-size:10px;color:var(--dim);">&gt; 50% deposit to confirm.
+        Balance due on arrival. Wallet address shared on booking confirmation.</div>
     </div>
-    <div style="margin-top:12px;font-family:var(--mono);font-size:10px;color:var(--dim);">&gt; 50% deposit to confirm.
-      Balance due on arrival. Wallet address shared on booking confirmation.</div>
-  </div>
 
-  <div class="section" style="background:var(--bg2);">
-    <div class="section-tag">// FAQ</div>
-    <div class="section-h">Common questions</div>
-    <div style="margin-top:32px;border:1px solid var(--border);">
-      <div style="padding:20px 24px;border-bottom:1px solid var(--border);">
-        <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">Can I book for a group?</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.7;">Yes. Group rates available for 3+ people
-          traveling together. Contact us for custom pricing.</div>
-      </div>
-      <div style="padding:20px 24px;border-bottom:1px solid var(--border);">
-        <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">What if I only need specific
-          services?</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.7;">Reach out and we can discuss à la carte
-          options. Packages are designed for best value, but we're flexible.</div>
-      </div>
-      <div style="padding:20px 24px;border-bottom:1px solid var(--border);">
-        <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">I'm staying longer than
-          Devcon week. Can coverage extend?</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.7;">Yes. Extensions for Diwali week, Goa, or other
-          India travel can be arranged at a daily rate.</div>
-      </div>
-      <div style="padding:20px 24px;">
-        <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">Is this available for people
-          traveling with partners or family?</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.7;">Absolutely. We can arrange non-conference
-          activities for partners and family during conference hours.</div>
+    <div class="section" style="background:var(--bg2);">
+      <div class="section-tag">// FAQ</div>
+      <div class="section-h">Common questions</div>
+      <div style="margin-top:32px;border:1px solid var(--border);">
+        <div style="padding:20px 24px;border-bottom:1px solid var(--border);">
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">Can I book for a group?</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.7;">Yes. Group rates available for 3+ people
+            traveling together. Contact us for custom pricing.</div>
+        </div>
+        <div style="padding:20px 24px;border-bottom:1px solid var(--border);">
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">What if I only need specific
+            services?</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.7;">Reach out and we can discuss à la carte
+            options. Packages are designed for best value, but we're flexible.</div>
+        </div>
+        <div style="padding:20px 24px;border-bottom:1px solid var(--border);">
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">I'm staying longer than
+            Devcon week. Can coverage extend?</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.7;">Yes. Extensions for Diwali week, Goa, or other
+            India travel can be arranged at a daily rate.</div>
+        </div>
+        <div style="padding:20px 24px;">
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px;">Is this available for people
+            traveling with partners or family?</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.7;">Absolutely. We can arrange non-conference
+            activities for partners and family during conference hours.</div>
+        </div>
       </div>
     </div>
-  </div>
   </div>
 
   <!-- ═══════════════════════════════════ MUMBAI GUIDE ═══════════════════════════════════ -->
@@ -2539,6 +2748,7 @@
         LABS</a> · MUMBAI · 2026</div>
     <div class="footer-links">
       <span class="footer-link" onclick="showPage('home')">Home</span>
+      <span class="footer-link" onclick="showServices()">What We Do</span>
       <span class="footer-link" onclick="showPackages()">Packages</span>
       <span class="footer-link" onclick="showPage('mumbai')">Mumbai Guide</span>
       <span class="footer-link" onclick="showPage('about')">About</span>
@@ -2551,11 +2761,8 @@
 
     <!-- Product Hunt Badge -->
     <div class="footer-ph">
-      <a href="https://www.producthunt.com/posts/onground"
-        target="_blank" rel="noopener noreferrer">
-        <img
-          src="./product-hunt.svg"
-          alt="Product Hunt" width="38" height="38">
+      <a href="https://www.producthunt.com/posts/onground" target="_blank" rel="noopener noreferrer">
+        <img src="./product-hunt.svg" alt="Product Hunt" width="38" height="38">
       </a>
     </div>
 
@@ -2565,9 +2772,9 @@
 
   <script>
     const emailJsConfig = {
-      publicKey: 'jADIBaSWbZtR2zj0F',
-      serviceId: 'service_jm86qa3',
-      templateId: 'template_4d2xsu9'
+      publicKey: 'Zty3jR6YueToIaS1a',
+      serviceId: 'service_v7pxjxs',
+      templateId: 'template_xl00u1v'
     };
 
     if (window.emailjs) {
@@ -2622,6 +2829,23 @@
       document.getElementById('page-home').classList.add('active');
       setActiveNav('packages');
       const section = document.getElementById('packages-section');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function showServices() {
+      const navLinks = document.getElementById('nav-links');
+      const menuIcon = document.querySelector('.menu-toggle i');
+      if (navLinks && navLinks.classList.contains('open')) {
+        navLinks.classList.remove('open');
+        if (menuIcon) menuIcon.className = 'ti ti-menu';
+      }
+
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-home').classList.add('active');
+      setActiveNav('services');
+      const section = document.getElementById('what-we-do');
       if (section) {
         section.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
