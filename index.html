@@ -1521,11 +1521,11 @@
     <div class="nav-links" id="nav-links">
       <span class="nav-link active" data-page="home" onclick="showPage('home')">Home</span>
       <span class="nav-link" data-page="packages" onclick="showPackages()">Packages</span>
-      <span class="nav-link" data-page="mumbai" onclick="showPage('mumbai')">Mumbai Guide</span>
+      <span class="nav-link" data-page="mumbai" onclick="showMumbaiIncredible()">Mumbai Guide</span>
       <span class="nav-link" data-page="about" onclick="showPage('about')">About</span>
-      <span class="nav-link" data-page="contact" onclick="showPage('contact')">Contact</span>
+      <span class="nav-link" data-page="contact" onclick="showGetInTouch()">Contact</span>
 
-      <button class="nav-cta" onclick="showPage('contact')">Book Now</button>
+      <button class="nav-cta" onclick="showBookForm()">Book Now</button>
     </div>
   </nav>
 
@@ -1917,7 +1917,7 @@
               airport pickup at 2am to your Diwali evening after the conference ends.</p>
             <div class="hero-actions">
               <button class="btn-p" onclick="showPackages()">// View Packages</button>
-              <button class="btn-g" onclick="showPage('contact')">Book Now →</button>
+              <button class="btn-g" onclick="showBookForm()">Book Now →</button>
             </div>
             <div class="hero-crypto">
               <span class="crypto-label">PAYMENTS:</span>
@@ -1970,7 +1970,7 @@
       <div class="stat-cell"><span class="stat-n">∞</span><span class="stat-l">Local connections</span></div>
     </div>
 
-    <div class="section">
+    <div class="section" id="mumbai-incredible">
       <div class="section-tag">// WHY THIS EXISTS</div>
       <div class="section-h">Mumbai is incredible.<br>It can also break you.</div>
       <p class="section-sub">Most international attendees land without a trusted local contact. We fix that — end to
@@ -2067,7 +2067,7 @@
             <li><span class="pk">+</span> Airport drop on departure</li>
             <li><span class="pk">+</span> Gift and shopping recommendations</li>
           </ul>
-          <button class="pkg-cta" onclick="showPage('contact')">// BOOK THIS TIER</button>
+          <button class="pkg-cta" onclick="showBookForm()">// BOOK THIS TIER</button>
         </div>
         <div class="pkg feat">
           <div class="rec">MOST POPULAR</div>
@@ -2090,7 +2090,7 @@
             <li><span class="pk">+</span> Local Web3 founder and VC introductions</li>
             <li><span class="pk">+</span> WhatsApp group with other attendees on the service</li>
           </ul>
-          <button class="pkg-cta" onclick="showPage('contact')">// BOOK THIS TIER</button>
+          <button class="pkg-cta" onclick="showBookForm()">// BOOK THIS TIER</button>
         </div>
         <div class="pkg">
           <div class="pkg-n">03 // FULL EXPERIENCE</div>
@@ -2111,7 +2111,7 @@
             <li><span class="pk">+</span> Goa or post-Devcon trip planning</li>
             <li><span class="pk">+</span> Post-departure debrief and relationship continuity</li>
           </ul>
-          <button class="pkg-cta" onclick="showPage('contact')">// BOOK THIS TIER</button>
+          <button class="pkg-cta" onclick="showBookForm()">// BOOK THIS TIER</button>
         </div>
       </div>
     </div>
@@ -2508,7 +2508,7 @@
       <div class="section-h">Let's get you ready for Mumbai</div>
       <div class="contact-grid">
         <div>
-          <div class="contact-h">Get in touch</div>
+          <div class="contact-h" id="get-in-touch">Get in touch</div>
           <p class="contact-p">Fill out the form and we'll respond within 24 hours with package confirmation, payment
             details, and next steps. Crypto and fiat both accepted.</p>
           <ul class="contact-info">
@@ -2571,9 +2571,9 @@
     <div class="footer-links">
       <span class="footer-link" onclick="showPage('home')">Home</span>
       <span class="footer-link" onclick="showPackages()">Packages</span>
-      <span class="footer-link" onclick="showPage('mumbai')">Mumbai Guide</span>
+      <span class="footer-link" onclick="showMumbaiIncredible()">Mumbai Guide</span>
       <span class="footer-link" onclick="showPage('about')">About</span>
-      <span class="footer-link" onclick="showPage('contact')">Contact</span>
+      <span class="footer-link" onclick="showGetInTouch()">Contact</span>
       <a class="footer-link" href="https://x.com/ongroundxyz" target="_blank" rel="noopener"><i
           class="ti ti-brand-x"></i> Twitter</a>
       <a class="footer-link" href="https://www.instagram.com/ongroundxyz" target="_blank" rel="noopener"><i
@@ -2653,6 +2653,57 @@
       document.getElementById('page-home').classList.add('active');
       setActiveNav('packages');
       const section = document.getElementById('packages-section');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function showMumbaiIncredible() {
+      const navLinks = document.getElementById('nav-links');
+      const menuIcon = document.querySelector('.menu-toggle i');
+      if (navLinks && navLinks.classList.contains('open')) {
+        navLinks.classList.remove('open');
+        if (menuIcon) menuIcon.className = 'ti ti-menu';
+      }
+
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-home').classList.add('active');
+      setActiveNav('mumbai');
+      const section = document.getElementById('mumbai-incredible');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function showGetInTouch() {
+      const navLinks = document.getElementById('nav-links');
+      const menuIcon = document.querySelector('.menu-toggle i');
+      if (navLinks && navLinks.classList.contains('open')) {
+        navLinks.classList.remove('open');
+        if (menuIcon) menuIcon.className = 'ti ti-menu';
+      }
+
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-contact').classList.add('active');
+      setActiveNav('contact');
+      const section = document.getElementById('get-in-touch');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function showBookForm() {
+      const navLinks = document.getElementById('nav-links');
+      const menuIcon = document.querySelector('.menu-toggle i');
+      if (navLinks && navLinks.classList.contains('open')) {
+        navLinks.classList.remove('open');
+        if (menuIcon) menuIcon.className = 'ti ti-menu';
+      }
+
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-contact').classList.add('active');
+      setActiveNav('contact');
+      const section = document.getElementById('contact-form');
       if (section) {
         section.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
