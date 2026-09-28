@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Experience India | OnGround | Mumbai, November 2026</title>
+<meta name="description" content="Run, eat, celebrate and experience Mumbai during Devcon week with OnGround.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f7f1e7;
+  --paper:#fffaf2;
+  --ink:#181512;
+  --orange:#e97b2e;
+  --maroon:#762e29;
+  --green:#2f5944;
+  --gold:#c19a50;
+  --muted:#6c655d;
+  --line:rgba(24,21,18,.14);
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:Inter,system-ui,sans-serif;
+}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+.container{width:min(var(--max),calc(100% - 42px));margin:auto}
+.section{position:relative;overflow:hidden}
+.pad{padding:100px 0}
+h1,h2,h3{
+  font-family:"Space Grotesk",Inter,sans-serif;
+  letter-spacing:-.055em;
+  margin:0;
+}
+h1{font-size:clamp(60px,9.2vw,140px);line-height:.84}
+h2{font-size:clamp(43px,6vw,86px);line-height:.91}
+h3{font-size:30px;line-height:1}
+.kicker{
+  font:11px "Share Tech Mono",monospace;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--orange);
+}
+.body{font-size:17px;line-height:1.55;color:#504a42}
+.lead{font-size:clamp(21px,2.3vw,31px);line-height:1.15}
+.tiny{font:10px/1.45 "Share Tech Mono";letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.accent{color:var(--orange)}
+
+nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(247,241,231,.93);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  min-height:72px;
+  display:flex;align-items:center;justify-content:space-between;gap:25px
+}
+.logo{font:15px "Share Tech Mono";letter-spacing:.03em}
+.logo span{color:var(--orange)}
+.byline{font:9px "Share Tech Mono";text-transform:uppercase;color:var(--muted);margin-top:2px}
+.nav-links{
+  display:flex;align-items:center;gap:22px;
+  font:10px "Share Tech Mono";text-transform:uppercase;color:var(--muted)
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{
+  background:var(--ink);color:var(--paper);
+  padding:10px 14px
+}
+
+.hero{
+  min-height:calc(100vh - 72px);
+  display:flex;align-items:center;
+  background:
+    radial-gradient(circle at 85% 22%,rgba(233,123,46,.19),transparent 24%),
+    radial-gradient(circle at 10% 85%,rgba(118,46,41,.10),transparent 21%),
+    var(--cream)
+}
+.hero .pattern{
+  position:absolute;inset:0;pointer-events:none;opacity:.13
+}
+.hero-inner{
+  width:min(var(--max),calc(100% - 42px));
+  margin:auto;
+  display:grid;grid-template-columns:1.27fr .73fr;gap:70px;align-items:end;
+  padding:90px 0 84px
+}
+.hero-copy{position:relative;z-index:2}
+.hero-copy .kicker{margin-bottom:21px}
+.hero-copy .lead{max-width:760px;margin-top:28px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:15px 19px;border:1px solid var(--ink);font-weight:600
+}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.secondary{background:transparent}
+.hero-side{
+  border-left:2px solid var(--orange);
+  padding-left:20px;
+  max-width:330px
+}
+.hero-side p{font-size:16px;line-height:1.5;color:#504940}
+.round-stamp{
+  position:absolute;right:7%;bottom:7%;
+  width:180px;height:180px;border:2px solid var(--orange);border-radius:50%;
+  transform:rotate(8deg);display:grid;place-items:center;opacity:.85
+}
+.round-stamp:before{
+  content:"MUMBAI • INDIA • 2026";
+  position:absolute;inset:11px;border:1px dashed var(--orange);border-radius:50%;
+  display:grid;place-items:center;text-align:center;
+  padding:38px;font:10px/1.45 "Share Tech Mono"
+}
+
+.statement{
+  background:var(--ink);color:var(--cream)
+}
+.statement .body{color:#c9c0b5}
+.statement-grid{
+  display:grid;grid-template-columns:.75fr 1.25fr;gap:70px;align-items:start
+}
+.statement-copy{
+  font:clamp(37px,4.7vw,69px)/.96 "Space Grotesk";
+  letter-spacing:-.055em
+}
+.statement-copy span{color:var(--orange)}
+.statement-points{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(247,241,231,.17)
+}
+.statement-cell{
+  background:var(--ink);padding:28px;min-height:185px
+}
+.statement-cell p{margin:40px 0 0;color:#c9c0b5;font-size:15px;line-height:1.5}
+
+.experiences{background:var(--paper)}
+.section-head{
+  display:grid;grid-template-columns:1fr .58fr;gap:44px;align-items:end
+}
+.section-head .body{max-width:340px}
+.experience-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:17px;margin-top:46px
+}
+.experience{
+  min-height:500px;border:1px solid var(--line);padding:28px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  position:relative;overflow:hidden
+}
+.experience:nth-child(1){background:#eef0df}
+.experience:nth-child(2){background:#f5e3d7}
+.experience:nth-child(3){background:#efe6d2}
+.experience .number{font:10px "Share Tech Mono";color:var(--orange)}
+.experience h3{font-size:39px;max-width:310px}
+.experience p{font-size:16px;line-height:1.52;color:#4e4840;max-width:330px}
+.exp-ornament{
+  position:absolute;right:-72px;bottom:-75px;width:235px;height:235px;border:1px solid rgba(24,21,18,.19);border-radius:50%
+}
+.exp-ornament:before,.exp-ornament:after{
+  content:"";position:absolute;border:1px solid rgba(24,21,18,.12);border-radius:50%;inset:28px
+}
+.exp-ornament:after{inset:56px}
+.experience .mini-link{
+  margin-top:18px;font:10px "Share Tech Mono";letter-spacing:.07em;text-transform:uppercase;color:var(--ink)
+}
+
+.run{
+  background:#edf0e6
+}
+.run-grid{
+  margin-top:46px;display:grid;grid-template-columns:.85fr 1.15fr;gap:66px;align-items:center
+}
+.run-poster{
+  min-height:540px;background:var(--green);color:var(--cream);padding:31px;
+  display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden
+}
+.run-poster .route{font:10px "Share Tech Mono";letter-spacing:.08em}
+.run-poster strong{
+  font:clamp(65px,8vw,112px)/.82 "Space Grotesk";
+  letter-spacing:-.07em;position:relative;z-index:2
+}
+.run-poster small{
+  font:10px/1.55 "Share Tech Mono";max-width:320px;letter-spacing:.04em;text-transform:uppercase;
+  position:relative;z-index:2
+}
+.run-poster .rings{
+  position:absolute;width:390px;height:390px;border:1px solid rgba(247,241,231,.38);border-radius:50%;
+  right:-115px;bottom:-120px
+}
+.run-poster .rings:before{content:"";position:absolute;inset:55px;border:1px solid rgba(247,241,231,.3);border-radius:50%}
+.run-poster .rings:after{content:"RUN";position:absolute;inset:105px;border:1px solid rgba(247,241,231,.25);border-radius:50%;display:grid;place-items:center;font:27px "Share Tech Mono";transform:rotate(-12deg)}
+.run-copy h2{max-width:720px}
+.run-copy>p{font-size:18px;line-height:1.55;color:#4c473f;margin-top:22px;max-width:670px}
+.details{border-top:1px solid var(--line);margin-top:28px}
+.detail-row{
+  display:grid;grid-template-columns:90px 1fr;gap:18px;padding:17px 0;border-bottom:1px solid var(--line)
+}
+.detail-row .label{font:10px "Share Tech Mono";color:var(--orange)}
+.detail-row p{margin:0;font-size:15px;line-height:1.5;color:#504a43}
+
+.food{background:#f9f1e7}
+.food-grid-layout{
+  margin-top:52px;display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center
+}
+.food-copy p{margin-top:23px}
+.food-list{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)
+}
+.food-item{
+  min-height:170px;background:var(--paper);padding:22px;
+  display:flex;flex-direction:column;justify-content:space-between
+}
+.food-item strong{font:28px "Space Grotesk"}
+.food-item span{font:9px "Share Tech Mono";text-transform:uppercase;color:var(--muted)}
+.food-note{
+  margin-top:32px;padding:18px 0;border-top:1px solid var(--line);
+  font-size:15px;line-height:1.5;color:#514b43
+}
+
+.india{
+  background:
+    radial-gradient(circle at 78% 20%,rgba(193,154,80,.22),transparent 22%),
+    radial-gradient(circle at 17% 80%,rgba(47,89,68,.09),transparent 23%),
+    var(--cream)
+}
+.india-grid{
+  margin-top:50px;display:grid;grid-template-columns:1.07fr .93fr;gap:60px;align-items:center
+}
+.india-copy>p{font-size:18px;line-height:1.55;max-width:700px;color:#4f4942;margin-top:22px}
+.india-elements{margin-top:32px;border-top:1px solid var(--line)}
+.india-row{
+  display:grid;grid-template-columns:40px 1fr;gap:13px;border-bottom:1px solid var(--line);padding:16px 0
+}
+.india-row .n{font:10px "Share Tech Mono";color:var(--orange)}
+.india-row p{margin:0;font-size:15px;line-height:1.5;color:#514a42}
+.india-art{
+  min-height:510px;display:grid;place-items:center;position:relative
+}
+.art-ring{
+  width:350px;height:350px;border:1px solid rgba(118,46,41,.16);border-radius:50%;position:absolute
+}
+.art-ring:before,.art-ring:after{
+  content:"";position:absolute;border:1px solid rgba(118,46,41,.11);border-radius:50%;inset:42px
+}
+.art-ring:after{inset:85px}
+.diya{
+  width:186px;height:101px;background:var(--maroon);border-radius:100% 100% 64% 64%;
+  position:relative;box-shadow:0 25px 70px rgba(118,46,41,.2)
+}
+.diya:before{
+  content:"";position:absolute;width:28px;height:55px;left:79px;top:-46px;
+  background:radial-gradient(circle at 50% 70%,#fff0ae 0 27%,#f2a33b 49%,transparent 70%);
+  border-radius:50%
+}
+.art-caption{
+  position:absolute;right:0;bottom:10px;max-width:220px;
+  font:10px/1.5 "Share Tech Mono";color:var(--muted)
+}
+
+.photos{
+  background:var(--paper)
+}
+.photo-grid{
+  margin-top:46px;display:grid;grid-template-columns:1.3fr .7fr;gap:18px
+}
+.photo-card{
+  min-height:260px;position:relative;overflow:hidden;border:1px solid var(--line);background:#ddd
+}
+.photo-card.tall{min-height:540px}
+.photo-card svg{width:100%;height:100%;display:block}
+.photo-label{
+  position:absolute;left:14px;bottom:14px;
+  background:rgba(24,21,18,.88);color:var(--paper);
+  padding:9px 11px;font:9px "Share Tech Mono";text-transform:uppercase;letter-spacing:.06em
+}
+.photo-side{
+  display:grid;grid-template-rows:1fr 1fr;gap:18px
+}
+.photo-copy{padding:24px;background:#f0e7da;border:1px solid var(--line)}
+.photo-copy p{margin-top:13px;font-size:15px;line-height:1.5;color:#534d45}
+
+.join{
+  background:var(--maroon);color:var(--cream)
+}
+.join .body{color:#e7dbd0}
+.join-grid{
+  display:grid;grid-template-columns:1fr .75fr;gap:72px;align-items:start
+}
+.join h2{max-width:860px}
+.join-copy p{font-size:19px;line-height:1.5;max-width:690px;margin-top:22px}
+.join-form{
+  background:var(--paper);color:var(--ink);padding:27px;border:1px solid rgba(247,241,231,.2)
+}
+.join-form h3{font-size:27px}
+label{
+  display:block;margin-top:18px;
+  font:10px "Share Tech Mono";text-transform:uppercase;color:var(--muted)
+}
+input,select{
+  width:100%;margin-top:7px;border:1px solid #cec5ba;background:#fff;padding:13px;border-radius:0
+}
+.form-checks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}
+.form-checks label{
+  margin:0;border:1px solid #d5ccc1;padding:11px;
+  font:13px Inter;color:var(--ink);text-transform:none;cursor:pointer
+}
+.form-checks input{width:auto;margin:0 6px 0 0;padding:0}
+.form-submit{
+  width:100%;border:0;background:var(--orange);padding:15px;margin-top:20px;cursor:pointer;font-weight:600
+}
+.form-success{
+  display:none;margin-top:13px;padding:13px;background:#e4efdf;color:#2f5944;
+  font-size:14px;line-height:1.45
+}
+.footer{
+  margin-top:70px;padding-top:25px;border-top:1px solid rgba(247,241,231,.18);
+  display:flex;justify-content:space-between;gap:20px;
+  font:10px "Share Tech Mono";text-transform:uppercase;letter-spacing:.08em;color:#cdbeb2
+}
+
+.faq{
+  background:var(--cream)
+}
+.faq-list{
+  margin-top:45px;border-top:1px solid var(--line)
+}
+details{
+  border-bottom:1px solid var(--line);padding:20px 0
+}
+summary{
+  cursor:pointer;list-style:none;
+  display:flex;justify-content:space-between;gap:30px;
+  font:21px "Space Grotesk";letter-spacing:-.025em
+}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font:18px "Share Tech Mono";color:var(--orange)}
+details[open] summary:after{content:"−"}
+details p{max-width:760px;margin:15px 0 4px;font-size:15px;line-height:1.55;color:#534d45}
+
+@media(max-width:900px){
+  :root{--gutter:30px}
+  .container,.hero-inner{width:min(var(--max),calc(100% - 30px))}
+  .nav-links a:not(.nav-cta){display:none}
+  .hero{min-height:auto}
+  .hero-inner{
+    grid-template-columns:1fr;gap:35px;
+    padding:73px 0 80px
+  }
+  .round-stamp{display:none}
+  .statement-grid,.section-head,.run-grid,.food-grid-layout,.india-grid,.join-grid{grid-template-columns:1fr;gap:35px}
+  .experience-grid{grid-template-columns:1fr;gap:15px}
+  .experience{min-height:370px}
+  .photo-grid{grid-template-columns:1fr}
+  .photo-card.tall{min-height:430px}
+  .photo-side{grid-template-columns:1fr 1fr;grid-template-rows:none}
+  .join-form{max-width:680px}
+}
+@media(max-width:620px){
+  .container,.hero-inner{width:min(var(--max),calc(100% - 24px))}
+  .pad{padding:68px 0}
+  .nav{min-height:62px}
+  .byline{display:none}
+  h1{font-size:clamp(54px,18vw,78px)}
+  h2{font-size:clamp(40px,12vw,60px)}
+  .lead{font-size:20px}
+  .hero-inner{padding:59px 0 68px}
+  .hero-actions{display:grid;grid-template-columns:1fr;gap:9px}
+  .btn{width:100%}
+  .statement-points{grid-template-columns:1fr}
+  .statement-cell{min-height:155px}
+  .experience{min-height:330px;padding:22px}
+  .experience h3{font-size:34px}
+  .experience p{font-size:15px}
+  .run-poster{min-height:370px;padding:24px}
+  .run-poster strong{font-size:64px}
+  .run-poster .rings{width:280px;height:280px}
+  .food-list{grid-template-columns:1fr 1fr}
+  .food-item{min-height:135px;padding:17px}
+  .food-item strong{font-size:22px}
+  .india-art{min-height:380px}
+  .art-ring{width:275px;height:275px}
+  .diya{width:155px;height:86px}
+  .diya:before{left:64px}
+  .art-caption{right:0;bottom:0;max-width:190px}
+  .photo-side{grid-template-columns:1fr}
+  .photo-card{min-height:230px}
+  .photo-card.tall{min-height:340px}
+  .join-copy p{font-size:17px}
+  .form-checks{grid-template-columns:1fr}
+  .footer{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:390px){
+  .container,.hero-inner{width:calc(100% - 20px)}
+  h1{font-size:53px}
+  h2{font-size:38px}
+  .food-list{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav">
+    <div>
+      <a class="logo" href="#top">ONGROUND<span>.</span></a>
+      <div class="byline">OnGround is an experience brand by Morphine Labs.</div>
+    </div>
+    <div class="nav-links">
+      <a href="#week">The week</a>
+      <a href="#india">India Night</a>
+      <a href="#faq">FAQ</a>
+      <a href="#join" class="nav-cta">Join the list</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+<section class="section hero">
+  <div class="pattern">
+    <svg viewBox="0 0 1200 720" preserveAspectRatio="none">
+      <g fill="none" stroke="#E97B2E" stroke-width="1">
+        <circle cx="1030" cy="530" r="120"/><circle cx="1030" cy="530" r="178"/><circle cx="1030" cy="530" r="235"/>
+        <path d="M880 530 C955 420,1105 420,1180 530 C1105 640,955 640,880 530Z"/>
+        <path d="M1030 380 C1135 455,1135 605,1030 680 C925 605,925 455,1030 380Z"/>
+        <circle cx="150" cy="610" r="80"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="kicker">Mumbai · November 2026 · Around Devcon Week</div>
+      <h1>You came to India for <span class="accent">Devcon.</span><br>Now see Mumbai.</h1>
+      <p class="lead">OnGround is bringing together a week of experiences that will take you outside the conference and into Mumbai.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#join">I am coming to Mumbai.</a>
+        <a class="btn secondary" href="#week">See what is happening this week.</a>
+      </div>
+    </div>
+
+    <div class="hero-side">
+      <div class="tiny">MUMBAI, NOT JUST THE VENUE</div>
+      <p style="margin-top:10px">Devcon 8 takes place in Mumbai from November 3 to 6, 2026. The conference itself is one part of the trip. OnGround is here for everything you will remember outside it.</p>
+      <div class="tiny" style="margin-top:30px">WHAT YOU CAN EXPECT</div>
+      <p style="margin-top:10px">You can run in the morning, try Mumbai food during the day, and spend one evening celebrating India with food, lights and music.</p>
+    </div>
+  </div>
+  <div class="round-stamp"></div>
+</section>
+
+<section class="section statement pad">
+  <div class="container statement-grid">
+    <div>
+      <div class="kicker">The idea</div>
+      <div class="statement-copy" style="margin-top:18px">Some of the best parts of a trip are the things you did not plan. <span>That is what we want to bring to Mumbai.</span></div>
+    </div>
+    <div>
+      <p class="body">You will have four days of talks, meetings and people to meet. We want the mornings and evenings around those days to feel different. You should be able to eat something you have never tried, see something you have never seen and spend time with people you would not have met inside a conference room.</p>
+      <div class="statement-points" style="margin-top:34px">
+        <div class="statement-cell">
+          <div class="tiny">FOR FIRST TIME VISITORS</div>
+          <p>We will make it easy to experience a few things that are genuinely local without asking you to spend days researching where to go.</p>
+        </div>
+        <div class="statement-cell">
+          <div class="tiny">FOR PEOPLE WHO KNOW INDIA</div>
+          <p>Bring your friends, take a break from the conference and enjoy a version of Mumbai that feels like a city rather than a conference stop.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section experiences pad" id="week">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="kicker">What is happening</div>
+        <h2 style="margin-top:16px">Three ways to experience Mumbai during Devcon week.</h2>
+      </div>
+      <p class="body">You can join one experience or all three, depending on what you feel like doing that day.</p>
+    </div>
+
+    <div class="experience-grid">
+      <article class="experience">
+        <div class="number">01 / MORNING</div>
+        <div>
+          <h3>Mumbai Run Club</h3>
+          <p style="margin-top:18px">We will meet in the morning for an easy group run, then slow down over chai and breakfast. The route will be comfortable for visitors and the pace will be friendly.</p>
+          <div class="mini-link">We will run together and then sit down for chai and breakfast.</div>
+        </div>
+        <div class="exp-ornament"></div>
+      </article>
+
+      <article class="experience">
+        <div class="number">02 / DAYTIME</div>
+        <div>
+          <h3>Mumbai Food Carts</h3>
+          <p style="margin-top:18px">We will bring small Mumbai food stops to approved locations around the places where people are staying and spending time, with vada pav, chai, pani puri, jalebi and more.</p>
+          <div class="mini-link">You can stop for something to eat and discover another side of Mumbai.</div>
+        </div>
+        <div class="exp-ornament"></div>
+      </article>
+
+      <article class="experience">
+        <div class="number">03 / EVENING</div>
+        <div>
+          <h3>India Night</h3>
+          <p style="margin-top:18px">We will spend one evening celebrating India through food, Diwali lights, music, dhol, mehendi, colour and the energy of a traditional baraat.</p>
+          <div class="mini-link">We will eat together, listen to music and celebrate India.</div>
+        </div>
+        <div class="exp-ornament"></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section run pad">
+  <div class="container run-grid">
+    <div class="run-poster">
+      <div class="route">MORNING · MUMBAI · 3K / 5K · CHAI</div>
+      <strong>Start your day<br>in Mumbai.</strong>
+      <small>Come for the run, stay for the chai, and leave with a few new people to say hello to during the day.</small>
+      <div class="rings"></div>
+    </div>
+    <div class="run-copy">
+      <div class="kicker">Mumbai Run Club</div>
+      <h2 style="margin-top:15px">You do not need to be a serious runner.</h2>
+      <p>We are keeping this simple. Meet in the morning, run through a good part of Mumbai, stop for chai and breakfast, take a few photographs and head into the day. The route will be chosen with visitors in mind, and the pace will stay comfortable enough for conversation.</p>
+      <div class="details">
+        <div class="detail-row"><div class="label">DISTANCE</div><p>We will offer a short route so the morning works for people with a full conference day ahead.</p></div>
+        <div class="detail-row"><div class="label">PACE</div><p>The group will stay together rather than turning the morning into a race.</p></div>
+        <div class="detail-row"><div class="label">FINISH</div><p>Every run will end with chai and breakfast so people have time to sit down and talk.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section food pad">
+  <div class="container">
+    <div class="kicker">Mumbai Food Carts</div>
+    <h2 style="margin-top:16px;max-width:900px">Try your first vada pav in the city that made it famous.</h2>
+    <div class="food-grid-layout">
+      <div class="food-copy">
+        <p class="body">Throughout Devcon week, we will bring small food experiences to approved spots around the city. You can walk up, grab something, try something you have never had before and carry on with your day.</p>
+        <div class="food-note"><strong>We are keeping the food simple because that is how we think it should be.</strong> The goal is not to create a fancy food festival. The goal is to give visitors a real taste of Mumbai.</div>
+      </div>
+      <div class="food-list">
+        <div class="food-item"><strong>Vada Pav</strong><span>Mumbai classic</span></div>
+        <div class="food-item"><strong>Masala Chai</strong><span>A daily ritual</span></div>
+        <div class="food-item"><strong>Pani Puri</strong><span>Street food favourite</span></div>
+        <div class="food-item"><strong>Samosa</strong><span>Crisp and familiar</span></div>
+        <div class="food-item"><strong>Jalebi</strong><span>Hot and sweet</span></div>
+        <div class="food-item"><strong>Mithai</strong><span>Made for Diwali season</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section india pad" id="india">
+  <div class="container india-grid">
+    <div class="india-copy">
+      <div class="kicker">India Night</div>
+      <h2 style="margin-top:16px">One evening for the people who travelled from everywhere to be here.</h2>
+      <p>India Night will bring together the things that make an Indian celebration feel like an Indian celebration. You can expect Indian food, Diwali lights, music, mehendi, dhol, colour and a short baraat moment that brings everyone together.</p>
+
+      <div class="india-elements">
+        <div class="india-row"><div class="n">01</div><p>We will welcome guests with flowers, colour and small details that feel warm from the moment they arrive.</p></div>
+        <div class="india-row"><div class="n">02</div><p>You will be able to eat, talk, try mehendi, move to the music and take part in the celebration instead of simply watching it.</p></div>
+        <div class="india-row"><div class="n">03</div><p>The evening will feel modern and Indian at the same time, with enough room for people to make their own night.</p></div>
+        <div class="india-row"><div class="n">04</div><p>Diwali will bring the light and colour of the season without turning the evening into a costume version of India.</p></div>
+      </div>
+    </div>
+
+    <div class="india-art">
+      <div class="art-ring"></div>
+      <div class="diya"></div>
+      <div class="art-caption">Come hungry. Come curious. Come ready to dance with people you met five minutes earlier.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section photos pad">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="kicker">A little taste of the feeling</div>
+        <h2 style="margin-top:16px">Mumbai is better when you leave the venue.</h2>
+      </div>
+      <p class="body">The colours, food, streets and people are part of the trip. We want to make it easy for you to experience them.</p>
+    </div>
+
+    <div class="photo-grid">
+      <div class="photo-card tall">
+        <svg viewBox="0 0 720 880" preserveAspectRatio="none" aria-label="Illustrated Mumbai street scene">
+          <rect width="720" height="880" fill="#e7d2ba"/>
+          <rect y="560" width="720" height="320" fill="#cb7d4d"/>
+          <rect x="70" y="180" width="250" height="420" fill="#7e2b24"/>
+          <rect x="120" y="245" width="75" height="95" fill="#f5f0e8"/>
+          <rect x="220" y="245" width="75" height="95" fill="#f5f0e8"/>
+          <rect x="120" y="380" width="75" height="95" fill="#f5f0e8"/>
+          <rect x="220" y="380" width="75" height="95" fill="#f5f0e8"/>
+          <rect x="400" y="260" width="220" height="340" fill="#2f5944"/>
+          <rect x="445" y="330" width="70" height="88" fill="#f7f1e7"/>
+          <rect x="530" y="330" width="50" height="88" fill="#f7f1e7"/>
+          <circle cx="470" cy="615" r="32" fill="#e97b2e"/>
+          <circle cx="555" cy="650" r="27" fill="#762e29"/>
+          <path d="M0 735 C150 670 260 790 390 720 S610 690 720 760 L720 880 L0 880Z" fill="#b85f39"/>
+          <circle cx="125" cy="85" r="34" fill="#e97b2e"/>
+          <g stroke="#f7f1e7" stroke-width="4" opacity=".7">
+            <path d="M95 85h60M125 55v60"/>
+            <path d="M565 690h55M592 662v55"/>
+          </g>
+        </svg>
+        <div class="photo-label">Mumbai after the conference</div>
+      </div>
+
+      <div class="photo-side">
+        <div class="photo-card photo-copy">
+          <div class="kicker">Food</div>
+          <h3 style="margin-top:12px">You will probably eat something with your hands.</h3>
+          <p>That is part of the fun. We want the experience to feel easy, generous and local.</p>
+        </div>
+        <div class="photo-card photo-copy" style="background:#efe6d2">
+          <div class="kicker">People</div>
+          <h3 style="margin-top:12px">You may arrive knowing nobody.</h3>
+          <p>You will probably leave with a few people to meet again the next day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section join pad" id="join">
+  <div class="container join-grid">
+    <div class="join-copy">
+      <div class="kicker" style="color:#f1ae7a">Join us in Mumbai.</div>
+      <h2 style="margin-top:16px">Tell us you are coming, and we will send you the details as they are confirmed.</h2>
+      <p>This is for people coming to Mumbai during Devcon week who want to experience more than the conference. Tell us where you are coming from and what you would like to join.</p>
+      <p class="body" style="margin-top:18px">We will share dates, meeting points and final details with people on the list first.</p>
+    </div>
+
+    <form class="join-form" id="joinForm"
+      action="https://formsubmit.co/admin@morphinelabs.com"
+      method="POST"
+      target="formsubmitFrame"
+      accept-charset="UTF-8">
+      <input type="hidden" name="_subject" value="New OnGround India Week registration">
+      <input type="hidden" name="_replyto" id="replyTo" value="">
+      <input type="hidden" name="_url" value="https://onground.xyz/diwali">
+      <div class="tiny">ON GROUND · MUMBAI</div>
+      <h3 style="margin-top:10px">I am coming.</h3>
+
+      <label for="name">Name</label>
+      <input id="name" name="name" required placeholder="Your name">
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required placeholder="you@example.com">
+
+      <label for="place">Where are you coming from?</label>
+      <input id="place" name="place" required placeholder="City, country">
+
+      <label for="devcon">Are you coming to Mumbai for Devcon week?</label>
+      <select id="devcon" name="devcon" required>
+        <option value="">Please choose</option>
+        <option>Yes, I have a Devcon ticket</option>
+        <option>Yes, I am coming for Devcon week</option>
+        <option>Maybe</option>
+      </select>
+
+      <label>What would you like to join?</label>
+      <div class="form-checks">
+        <label><input type="checkbox" name="interest" value="Run Club"> Mumbai Run Club</label>
+        <label><input type="checkbox" name="interest" value="Food Carts"> Mumbai Food Carts</label>
+        <label><input type="checkbox" name="interest" value="India Night"> India Night</label>
+        <label><input type="checkbox" name="interest" value="All"> All three</label>
+      </div>
+
+      <button class="form-submit" type="submit">Add me to the list.</button>
+      <div class="form-success" id="formSuccess">You are on the list. We will send the next details to you first.</div>
+      <input type="hidden" name="source" value="OnGround public India experience page">
+    </form>
+    <iframe name="formsubmitFrame" id="formsubmitFrame" style="display:none" title="Submission response"></iframe>
+  </div>
+
+  <div class="container footer">
+    <span>ONGROUND · OnGround, by Morphine Labs.</span>
+    <span>MUMBAI · NOVEMBER 2026</span>
+  </div>
+</section>
+
+<section class="section faq pad" id="faq">
+  <div class="container">
+    <div class="kicker">Questions</div>
+    <h2 style="margin-top:16px">A few things you may want to know.</h2>
+    <div class="faq-list">
+      <details>
+        <summary>When is this happening?</summary>
+        <p>The experiences are built around Devcon week in Mumbai. Devcon 8 is taking place from November 3 to 6, 2026 at Jio World Centre in BKC.</p>
+      </details>
+      <details>
+        <summary>Who can join?</summary>
+        <p>Anyone visiting Mumbai that week is welcome to register interest. Some experiences will have limited capacity, and final details will be shared with people on the list.</p>
+      </details>
+      <details>
+        <summary>Do I need a Devcon ticket?</summary>
+        <p>No. The OnGround experiences are separate from Devcon. You can register your interest even if you are coming to Mumbai for the wider week rather than attending the conference itself.</p>
+      </details>
+      <details>
+        <summary>Do I have to pay to join?</summary>
+        <p>We will share the final details for each experience with the people on the list. The public page does not require payment to register interest.</p>
+      </details>
+      <details>
+        <summary>Will I know the exact locations before I arrive?</summary>
+        <p>Yes. Meeting points and final locations will be shared with registered guests once they are confirmed and approved for the relevant experience.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  const form = document.getElementById("joinForm");
+  const frame = document.getElementById("formsubmitFrame");
+  const success = document.getElementById("formSuccess");
+  const button = form.querySelector(".form-submit");
+  const replyTo = document.getElementById("replyTo");
+
+  form.addEventListener("submit", function(){
+    replyTo.value = document.getElementById("email").value;
+    button.disabled = true;
+    button.textContent = "Sending your details...";
+    window.setTimeout(function(){
+      success.style.display = "block";
+      button.textContent = "You are on the list.";
+    }, 900);
+  });
+
+  frame.addEventListener("load", function(){
+    if (button.disabled) {
+      success.style.display = "block";
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
